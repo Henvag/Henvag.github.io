@@ -1,0 +1,66 @@
+.navbar {
+  background-color: #0004ff !important; /* Changing the background color of the navbar */
+}
+.navbar-brand {
+  font-family: 'Anton', sans-serif; /* Applying the Anton font */
+  font-size: 2em; /* Making the text bigger */
+  color: white !important; /* Changing the font color to white */
+}
+
+body {
+  background-color: #1F2334; /* Changing the background color to #1F2334 */
+}
+
+.jumbotron, .container, .footer {
+  background-color: inherit; /* Ensuring these elements keep their original background color */
+}
+
+.jumbotron {
+  color: white; /* Changing the text color to white */
+}
+
+.unique-github {
+  padding-left: 0px;
+
+}
+
+.henvagdev-icon {
+  padding-left: 0;
+}
+
+body {
+  zoom: 2;
+  background-color: #1F2334; /* Changing the background color to #1F2334 */
+}
+
+.arrow-icon {
+  display: block;
+  margin-left: 27px; /* Adjust this value to move the arrow more or less to the left */
+  padding-top: 10px;
+  height: 50px;
+}
+
+body {
+  position: relative; /* Make the body position relative */
+  min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
+}
+
+.footer {
+  position: fixed; /* Make the footer position fixed */
+  bottom: 0; /* Position the footer at the bottom */
+  width: 100%; /* Make the footer take up the full width */
+  background-color: #000000 !important; /* Changing the background color to black */
+}
+
+.spotify-player {
+  position: fixed;
+  right: 20px; /* Adjust this value to move the player more or less to the left */
+  top: 20%; /* Adjust this value to move the player up or down */
+}
+
+
+@media (max-width: 600px) {
+  .spotify-player {
+    display: none;
+  }
+}
