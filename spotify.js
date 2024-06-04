@@ -1,6 +1,6 @@
 const clientId = 'b717312e3a904a39943442f7f6f11b4b'; // Replace with your client ID
 const clientSecret = 'fb9b3c5b93bb49e3a89a637f17d471ce'; // Replace with your client secret
-const redirectUri = encodeURIComponent('http://localhost:8000/callback'); // Replace with your redirect URI
+const redirectUri = encodeURIComponent('https://henvag.github.io'); // Replace with your redirect URI
 const scopes = encodeURIComponent('user-read-private user-read-email'); // Replace with the scopes you need
 
 // Function to get an access token
