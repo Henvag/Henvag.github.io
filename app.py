@@ -6,7 +6,7 @@ CORS(app)  # This will enable CORS for all routes
 
 @app.route('/')
 def home():
-    return "Hello, world!"
+    return "Spotify Connected!"
 
 @app.route('/callback')
 def callback():
