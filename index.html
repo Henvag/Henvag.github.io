@@ -6,58 +6,66 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> <!-- Importing a cool font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 
     <title>Hello, world!</title>
   </head>
   <body>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-    <div class="col-2">
-      <a href="https://github.com/Henvag">
-        <img src="github.png" alt="Icon" style="height:50px;" class="github-icon unique-github">
-      </a>
-    </div>
-    <div class="col-8 d-flex justify-content-center">
-      <img src="HenvagDev.png" alt="Logo" style="height:50px;" class="henvagdev-icon">
-    </div>
-    <div class="col-2">
-      <!-- This div will be empty and serve as a spacer -->
-    </div>
-  </nav>
-  <img src="arrow.png" alt="Arrow" class="arrow-icon">
-<div class="jumbotron">
-  <h1 class="display-4">About me:</h1>
-  <p class="lead">Student in Information Science at the University of Bergen</p>
-  <hr class="my-4">
-  <p>This page is mainly for showing what i am working on, and have done previously :)</p>
-  <div class="d-flex justify-content-center">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Github</a>
-  </div>
-</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+      <div class="navbar-content">
+        <div class="left-content">
+          <a href="https://github.com/Henvag">
+            <img src="github.png" alt="Icon" style="height:50px;" class="github-icon unique-github">
+          </a>
+          <a class="btn btn-primary projects-button" href="#" role="button">Projects</a>
+        </div>
+        <img src="HenvagDev.png" alt="Logo" style="height:50px;" class="henvagdev-icon">
+        <div class="right-content"></div>
+      </div>
 
-<button id="login">Login with Spotify</button>
- <div class="spotify-player">
-  <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-</div>
+      <div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+      <a href="#">GitHub</a>
+      <a href="#">Projects</a>
+      </div>
+  </div>
+    </nav>
+
+    <img src="arrow.png" alt="Arrow" class="arrow-icon">
+
+    <div class="jumbotron">
+      <h1 class="display-4">About me:</h1>
+      <p class="lead">Student in Information Science at the University of Bergen</p>
+      <hr class="my-4">
+      <p>This page is mainly for showing what i am working on, and have done previously :)</p>
+      <div class="d-flex justify-content-center"></div>
+    </div>
+
+    <div class="spotify-section">
+      <p class="music-text">Enjoy some music while browsing!</p>
+      <div class="spotify-player" draggable="true" id="spotify-player">
+        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <button id="login">Login with Spotify</button>
+    </div>
 
     <div class="container">
       <div class="row">
-        <div class="col">
-          Column 1
-        </div>
-        <div class="col">
-          Column 2
-        </div>
+        <div class="col">Column 1</div>
+        <div class="col">Column 2</div>
       </div>
     </div>
 
-   <footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">Made by Henvag 2024</span>
-  </div>
-</footer>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Made by Henvag 2024</span>
+      </div>
+    </footer>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

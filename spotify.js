@@ -1,9 +1,35 @@
 const clientId = 'b717312e3a904a39943442f7f6f11b4b'; // Replace with your client ID
 const clientSecret = 'fb9b3c5b93bb49e3a89a637f17d471ce'; // Replace with your client secret
-const redirectUri = encodeURIComponent('https://www.google.com'); // Replace with your redirect URI
+const redirectUri = encodeURIComponent('https://henvag.github.io'); // Replace with your redirect URI
 const scopes = encodeURIComponent('user-read-private user-read-email'); // Replace with the scopes you need
 
 // Function to get an access token
+document.addEventListener('DOMContentLoaded', (event) => {
+var spotifyPlayer = document.getElementById('spotify-player');
+
+spotifyPlayer.addEventListener('dragstart', function(event) {
+  event.dataTransfer.setData('text/plain', 'spotify-player');
+});
+
+document.body.addEventListener('dragover', function(event) {
+  event.preventDefault();
+});
+
+document.body.addEventListener('drop', function(event) {
+  event.preventDefault();
+  var id = event.dataTransfer.getData('text');
+  var draggableElement = document.getElementById(id);
+  var dropzone = event.target;
+  dropzone.appendChild(draggableElement);
+  draggableElement.style.position = 'absolute';
+  draggableElement.style.left = event.clientX + 'px';
+  draggableElement.style.top = event.clientY + 'px';
+});
+});
+
+
+
+
 async function getAccessToken(code) {
   const result = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
@@ -36,5 +62,3 @@ if (code) {
     // For example, you could get the user's top tracks and display them on the page
   });
 }
-
-

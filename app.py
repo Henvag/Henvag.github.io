@@ -1,6 +1,9 @@
 from flask import Flask, request
 from flask_cors import CORS
 
+
+REDIRECT_URI = 'https://henvag.github.io'  # Replace with your redirect URI
+
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
 
@@ -17,6 +20,6 @@ def callback():
 
 if __name__ == '__main__':
     try:
-        app.run(port=80)
+        app.run(port=5000)
     except PermissionError:
         print("You don't have the necessary permissions to bind to port 80.")
