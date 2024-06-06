@@ -111,6 +111,72 @@ body {
 }
 
 
+
+.fade-out {
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+
+
+
+.small-spotify-player {
+  width: 150px;
+  height: 250px;
+}
+
+
+
+
+
+.project {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #000;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #6e40f3;;
+}
+
+.project img {
+  width: 254px;
+  height: 130px;
+  display: block;
+  margin: auto;
+}
+
+
+
+
+.project-info h2 {
+  text-align: center;
+  color: black;
+  font: 16px 'Circular', sans-serif;
+
+}
+
+.project-info p {
+  text-align: center;
+  color: black;
+  font: 12px 'Circular', sans-serif;
+
+}
+
+
+
+
+
+
+
+
 /* Mobile version down here*/
 
 

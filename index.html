@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 
-    <title>Hello, world!</title>
+    <title>Henvag Personal Website 🔥</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
@@ -22,28 +22,19 @@
           </a>
           <a class="btn btn-primary projects-button" href="#" role="button">Projects</a>
         </div>
-        <img src="HenvagDev.png" alt="Logo" style="height:50px;" class="henvagdev-icon">
+        <a href="https://henvag.github.io/">
+        <img src="HenvagDev.png" alt="Logo" style="height:50px;" class="henvagdev-icon"> </a>
         <div class="right-content"></div>
       </div>
 
       <div class="dropdown">
     <button class="dropbtn">Menu</button>
     <div class="dropdown-content">
-      <a href="#">GitHub</a>
+      <a href="https://github.com/Henvag">GitHub</a>
       <a href="#">Projects</a>
       </div>
   </div>
     </nav>
-
-    <img src="arrow.png" alt="Arrow" class="arrow-icon">
-
-    <div class="jumbotron">
-      <h1 class="display-4">About me:</h1>
-      <p class="lead">Student in Information Science at the University of Bergen</p>
-      <hr class="my-4">
-      <p>This page is mainly for showing what i am working on, and have done previously :)</p>
-      <div class="d-flex justify-content-center"></div>
-    </div>
 
     <div class="spotify-section">
       <p class="music-text">Enjoy some music while browsing!</p>
@@ -53,18 +44,33 @@
       <button id="login">Login with Spotify</button>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col">Column 1</div>
-        <div class="col">Column 2</div>
+    <div class="main-content">
+      <img src="arrow.png" alt="Arrow" class="arrow-icon">
+
+      <div class="jumbotron">
+        <h1 class="display-4">About me:</h1>
+        <p class="lead">Student in Information Science at the University of Bergen</p>
+        <hr class="my-4">
+        <p>This page is mainly for showing what i am working on, and have done previously :)</p>
+        <div class="d-flex justify-content-center"></div>
       </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col">Column 1</div>
+          <div class="col">Column 2</div>
+        </div>
+      </div>
+
+
     </div>
 
     <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
-        <span class="text-muted">Made by Henvag 2024</span>
-      </div>
-    </footer>
+        <div class="container">
+          <span class="text-muted">Made by Henvag 2024</span>
+        </div>
+      </footer>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -72,5 +78,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="spotify.js"></script>
+    <script>
+     document.querySelector('.projects-button').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default action
+
+  var button = document.querySelector('.projects-button');
+  var pageToFetch = button.textContent === 'Projects' ? 'projects.html' : 'main-content.html';
+  var mainContent = document.querySelector('.main-content');
+
+  // Add the 'fade-out' class to start the animation
+  mainContent.classList.add('fade-out');
+
+  // Wait for the animation to complete before fetching the new page
+  setTimeout(function() {
+    fetch(pageToFetch) // Fetch the content of the new page
+      .then(response => response.text())
+      .then(data => {
+        // Create a new div and add the new content to it
+        var newContent = document.createElement('div');
+        newContent.innerHTML = data;
+        newContent.classList.add('main-content');
+
+        // Replace the old '.main-content' div with the new one
+        mainContent.parentNode.replaceChild(newContent, mainContent);
+
+        // Add the 'fade-in' class to start the animation
+        newContent.classList.add('fade-in');
+
+        // Remove the 'fade-in' class after the animation is complete
+        setTimeout(function() {
+          newContent.classList.remove('fade-in');
+        }, 1000); // The duration of the animation in milliseconds
+      });
+
+    button.textContent = button.textContent === 'Projects' ? 'Home' : 'Projects';
+  }, 1000); // The duration of the animation in milliseconds
+});
+    </script>
   </body>
 </html>
