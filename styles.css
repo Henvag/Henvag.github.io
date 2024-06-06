@@ -105,7 +105,7 @@ body {
 
 
 .music-text {
-  font-family: 'Roboto', sans-serif; /* This is the font used in the 'Student in Information Science at the University of Bergen' text */
+  font-family: 'Circular', sans-serif;
   color: white; /* This will make the text color white */
   text-align: center; /* This will center the text */
 }
