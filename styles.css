@@ -1,5 +1,7 @@
 .navbar {
   background-color: #0004ff !important; /* Changing the background color of the navbar */
+  padding: 0.001px 0; /* Adjust as needed */
+  margin: -1px 0; /* Adjust as needed */
 }
 .navbar-brand {
   font-family: 'Anton', sans-serif; /* Applying the Anton font */
@@ -7,6 +9,18 @@
   color: white !important; /* Changing the font color to white */
 }
 
+.navbar-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.left-content {
+  flex: 1;
+  margin-right: 200px; /* Adjust as needed, should be the same as the margin-right of .dropbtn */
+}
 body {
   background-color: #1F2334; /* Changing the background color to #1F2334 */
 }
@@ -20,7 +34,7 @@ body {
 }
 
 .unique-github {
-  margin-left: 15px; /* Adjust this value to move the logo more or less to the right */
+  margin-left: 30px; /* Adjust this value to move the logo more or less to the right */
 }
 
 .henvagdev-icon {
@@ -133,6 +147,11 @@ body {
 
 
 
+.menu-image {
+    height: 24px; /* Adjust as needed */
+    width: 24px; /* Adjust as needed */
+}
+
 
 .project {
   width: 300px;
@@ -198,28 +217,44 @@ body {
   font-size: 16px;
   border: none;
   cursor: pointer;
+  margin-right: 200px; /* Adjust as needed */
 }
 
 /* Style the dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #000000;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  opacity: 0; /* Make it invisible by default */
+  transition: opacity 0.5s; /* Add a transition */
+  border-radius: 15px;
+  left: 11%;
+  transform: translateX(-50%);
+}
+
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1; /* Make it fully visible when hovered over */
+  background-color: #000000;
 }
 
 /* Style the links inside the dropdown */
 .dropdown-content a {
-  color: black;
+  color: #ffffff;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {background-color: #6e40f3;
+  border-radius: 15px;
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -228,8 +263,13 @@ body {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: #6e40f3;
+  border-radius: 15px;
 }
+
+
+
+
 
 @media (max-width: 600px) {
   .github-logo,
@@ -239,6 +279,17 @@ body {
 
   .dropdown {
     display: block;
+  }
+}
+
+
+
+@media screen and (min-width: 1920px) {
+  .scale-content {
+    transform: scale(0.75);
+    transform-origin: 0 0;
+    font-size: 0.75em;
+    line-height: 1.33em;
   }
 }
 
