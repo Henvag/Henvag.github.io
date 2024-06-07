@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 
 
-REDIRECT_URI = 'https://henvag.github.io'  # Replace with your redirect URI
+REDIRECT_URI = 'https://henvag.github.io/'  # Replace with your redirect URI
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
