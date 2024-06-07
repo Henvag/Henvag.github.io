@@ -66,11 +66,10 @@ body {
 }
 
 .spotify-section {
-  position: fixed;
+  /* position: fixed; Remove this line */
   right: 20px; /* Adjust this value to move the section more or less to the left */
   top: 15%; /* Adjust this value to move the section up or down */
 }
-
 .spotify-player {
   width: 300px;
   height: 380px;
@@ -191,10 +190,85 @@ body {
 
 
 
+#top-tracks {
+  margin-top: 20px; /* Add some space above the top tracks */
+  color: white; /* Make the text color white */
+  font-family: 'Circular', sans-serif; /* Use the Circular font */
+}
+
+
+.track {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.album-cover {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.track-name {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 8px;
+}
+
+.artist-name {
+  color: gray;
+   font-size: 8px;
+}
+
+
+#audio-player {
+   display: none;
+}
+
+
+
+#custom-audio-player {
+  /* Style the player to your liking */
+  width: 200px ;
+  height: 50px;
+}
+
+#play-pause-button {
+  /* Style the play/pause button to your liking */
+}
+
+#progress-bar {
+  /* Style the progress bar to your liking */
+}
 
 
 
 
+
+.smaller-text {
+  font-size: 0.5em; /* Adjust this value to your liking */
+}
+
+.hide-element {
+  display: none;
+}
+
+
+
+
+.music-box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #6e40f3;
+  position: fixed;
+  right: 60px;
+  top: 120px; /* Adjust this value to move the box downwards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+}
 
 /* Mobile version down here*/
 
@@ -225,7 +299,7 @@ body {
   display: none;
   position: absolute;
   background-color: #000000;
-  min-width: 160px;
+  min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   opacity: 0; /* Make it invisible by default */
@@ -233,6 +307,8 @@ body {
   border-radius: 15px;
   left: 11%;
   transform: translateX(-50%);
+
+  
 }
 
 

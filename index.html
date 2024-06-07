@@ -41,15 +41,16 @@
     </div>
 </div>
     </nav>
-
+<div class="music-box">
     <div class="spotify-section">
-      <p class="music-text">Enjoy some music while browsing!</p>
-      <div class="spotify-player" draggable="true" id="spotify-player">
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      </div>
-      <button id="login">Login with Spotify</button>
-    </div>
+ <p class="music-text">Enjoy some music while browsing! <br><span class="smaller-text">(Your top 5 tracks)</span></p>
+        <audio id="audio-player" controls></audio>
 
+
+  <div id="top-tracks"></div> <!-- New div for displaying the user's top tracks -->
+        <button id="login">Login with Spotify</button>
+</div >
+</div>
     <div class="main-content">
       <img src="arrow.png" alt="Arrow" class="arrow-icon">
 

@@ -1,34 +1,27 @@
 const clientId = 'b717312e3a904a39943442f7f6f11b4b'; // Replace with your client ID
 const clientSecret = 'fb9b3c5b93bb49e3a89a637f17d471ce'; // Replace with your client secret
-const redirectUri = encodeURIComponent('https://henvag.github.io'); // Replace with your redirect URI
-const scopes = encodeURIComponent('user-read-private user-read-email'); // Replace with the scopes you need
+const redirectUri = encodeURIComponent('http://localhost:63342/HenvagDev/index.html');
+const scopes = encodeURIComponent('user-read-private user-read-email user-top-read'); // Added user-top-read scope
 
 // Function to get an access token
 document.addEventListener('DOMContentLoaded', (event) => {
-var spotifyPlayer = document.getElementById('spotify-player');
+  // Get the code from the URL
+  const code = new URLSearchParams(window.location.search).get('code');
 
-spotifyPlayer.addEventListener('dragstart', function(event) {
-  event.dataTransfer.setData('text/plain', 'spotify-player');
+  if (code) {
+    // If there's a code in the URL, exchange it for an access token
+    getAccessToken(code).then(function(accessToken) {
+      // Now you can use the access token to make requests to the Spotify Web API
+      getUserTopTracks(accessToken); // Call the new function to get the user's top tracks
+
+      // Hide the login button
+      document.getElementById('login').style.display = 'none';
+    });
+  } else {
+    // If there's no code in the URL, show the login button
+    document.getElementById('login').style.display = 'block';
+  }
 });
-
-document.body.addEventListener('dragover', function(event) {
-  event.preventDefault();
-});
-
-document.body.addEventListener('drop', function(event) {
-  event.preventDefault();
-  var id = event.dataTransfer.getData('text');
-  var draggableElement = document.getElementById(id);
-  var dropzone = event.target;
-  dropzone.appendChild(draggableElement);
-  draggableElement.style.position = 'absolute';
-  draggableElement.style.left = event.clientX + 'px';
-  draggableElement.style.top = event.clientY + 'px';
-});
-});
-
-
-
 
 async function getAccessToken(code) {
   const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -41,7 +34,78 @@ async function getAccessToken(code) {
   });
 
   const data = await result.json();
+  localStorage.setItem('accessToken', data.access_token); // Store the access token in local storage
   return data.access_token;
+}
+
+// Function to load the top 5 tracks
+function loadTopTracks() {
+  // Get the access token from local storage
+  const accessToken = localStorage.getItem('accessToken');
+
+  if (accessToken) {
+    // If there's an access token in local storage, use it to get the user's top tracks
+    getUserTopTracks(accessToken);
+
+    // Hide the login button
+    document.getElementById('login').style.display = 'none';
+  } else {
+    // If there's no access token in local storage, show the login button
+    document.getElementById('login').style.display = 'block';
+  }
+}
+
+// Call the loadTopTracks function when the page loads
+document.addEventListener('DOMContentLoaded', loadTopTracks);
+
+// New function to get the user's top tracks
+async function getUserTopTracks(accessToken) {
+  const result = await fetch('https://api.spotify.com/v1/me/top/tracks', {
+    headers: {
+      'Authorization': 'Bearer ' + accessToken
+    }
+  });
+
+  const data = await result.json();
+
+  const topTracksDiv = document.getElementById('top-tracks');
+  const audioPlayer = document.getElementById('audio-player'); // Get the audio player
+
+  // Limit the number of tracks processed to ten
+  data.items.slice(0, 5).forEach(track => {
+    // Create a new div for each track
+    const trackDiv = document.createElement('div');
+    trackDiv.classList.add('track');
+
+    // Create an img element for the album cover
+    const albumCover = document.createElement('img');
+    albumCover.src = track.album.images[0].url;
+    albumCover.classList.add('album-cover');
+
+    // Add a click event listener to the album cover
+    albumCover.addEventListener('click', () => {
+      audioPlayer.src = track.preview_url; // Change the source of the audio player
+      audioPlayer.play(); // Play the audio
+    });
+
+    // Create a p element for the track name
+    const trackName = document.createElement('p');
+    trackName.textContent = track.name;
+    trackName.classList.add('track-name');
+
+    // Create a p element for the artist name
+    const artistName = document.createElement('p');
+    artistName.textContent = track.artists[0].name;
+    artistName.classList.add('artist-name');
+
+    // Append the img and p elements to the track div
+    trackDiv.appendChild(albumCover);
+    trackDiv.appendChild(trackName);
+    trackDiv.appendChild(artistName);
+
+    // Append the track div to the top tracks div
+    topTracksDiv.appendChild(trackDiv);
+  });
 }
 
 // Function to handle the login button click
@@ -51,14 +115,3 @@ document.getElementById('login').addEventListener('click', function() {
   // Redirect the user to the Spotify login page
   window.location.href = url;
 });
-
-// Get the code from the URL
-const code = new URLSearchParams(window.location.search).get('code');
-
-if (code) {
-  // If there's a code in the URL, exchange it for an access token
-  getAccessToken(code).then(function(accessToken) {
-    // Now you can use the access token to make requests to the Spotify Web API
-    // For example, you could get the user's top tracks and display them on the page
-  });
-}
