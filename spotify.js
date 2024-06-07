@@ -1,10 +1,12 @@
 const clientId = 'b717312e3a904a39943442f7f6f11b4b'; // Replace with your client ID
 const clientSecret = 'fb9b3c5b93bb49e3a89a637f17d471ce'; // Replace with your client secret
-const redirectUri = encodeURIComponent('https://henvag.github.io/');
+const redirectUri = encodeURIComponent('http://localhost:63342/HenvagDev/index.html');
 const scopes = encodeURIComponent('user-read-private user-read-email user-top-read'); // Added user-top-read scope
 
 // Function to get an access token
 document.addEventListener('DOMContentLoaded', (event) => {
+  // ... Your existing code ...
+
   // Get the code from the URL
   const code = new URLSearchParams(window.location.search).get('code');
 
@@ -13,13 +15,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     getAccessToken(code).then(function(accessToken) {
       // Now you can use the access token to make requests to the Spotify Web API
       getUserTopTracks(accessToken); // Call the new function to get the user's top tracks
-
-      // Hide the login button
-      document.getElementById('login').style.display = 'none';
     });
-  } else {
-    // If there's no code in the URL, show the login button
-    document.getElementById('login').style.display = 'block';
   }
 });
 
@@ -34,30 +30,10 @@ async function getAccessToken(code) {
   });
 
   const data = await result.json();
-  localStorage.setItem('accessToken', data.access_token); // Store the access token in local storage
   return data.access_token;
 }
 
-// Function to load the top 5 tracks
-function loadTopTracks() {
-  // Get the access token from local storage
-  const accessToken = localStorage.getItem('accessToken');
-
-  if (accessToken) {
-    // If there's an access token in local storage, use it to get the user's top tracks
-    getUserTopTracks(accessToken);
-
-    // Hide the login button
-    document.getElementById('login').style.display = 'none';
-  } else {
-    // If there's no access token in local storage, show the login button
-    document.getElementById('login').style.display = 'block';
-  }
-}
-
-// Call the loadTopTracks function when the page loads
-document.addEventListener('DOMContentLoaded', loadTopTracks);
-
+// New function to get the user's top tracks
 // New function to get the user's top tracks
 async function getUserTopTracks(accessToken) {
   const result = await fetch('https://api.spotify.com/v1/me/top/tracks', {
@@ -108,9 +84,25 @@ async function getUserTopTracks(accessToken) {
   });
 }
 
+
+
+
+
 // Function to handle the login button click
+
+
 document.getElementById('login').addEventListener('click', function() {
   const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scopes}&redirect_uri=${redirectUri}`;
+
+
+
+
+
+
+
+
+
+
 
   // Redirect the user to the Spotify login page
   window.location.href = url;
