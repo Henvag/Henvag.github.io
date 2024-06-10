@@ -19,7 +19,7 @@
 
 .left-content {
   flex: 1;
-  margin-right: 200px; /* Adjust as needed, should be the same as the margin-right of .dropbtn */
+
 }
 body {
   background-color: #1F2334; /* Changing the background color to #1F2334 */
@@ -34,11 +34,18 @@ body {
 }
 
 .unique-github {
-  margin-left: 30px; /* Adjust this value to move the logo more or less to the right */
+  margin-left: 30px; /* Adjust this value to move the GitHub icon more or less to the left */
+
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start; /* This will align the items to the start of the container */
 }
 
 .henvagdev-icon {
   padding-left: 0;
+
 }
 
 body {
@@ -105,7 +112,15 @@ body {
   width: 100%;
 }
 
-.left-content, .right-content {
+.left-content {
+  display: flex;
+  justify-content: flex-start; /* This will align the items to the start of the container */
+  flex: 1;
+}
+
+.right-content {
+  display: flex;
+  justify-content: center;
   flex: 1;
 }
 
@@ -114,7 +129,16 @@ body {
   font-family: 'Circular', sans-serif;
   color: black; /* Change the font color to black */
   background-color: #6e40f3; /* Change the background color to #6e40f3 */
+  text-align: center;
+  height: 35px; /* Adjust this value to make the button taller or shorter */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9px; /* Adjust this value to move the button up or down */
+
+
 }
+
 
 
 .music-text {
@@ -270,6 +294,26 @@ body {
   background-color: #000000;
 }
 
+
+
+/* Styles for screens that are less than or equal to 1920px */
+@media (max-width: 1920px) {
+  .music-box {
+    width: 200px;
+    height: 200px;
+    font-size: 0.8em; /* Adjust this value to your liking */
+  }
+}
+
+/* Styles for screens that are more than 1920px */
+@media (min-width: 1921px) {
+  .music-box {
+    width: 300px;
+    height: 300px;
+    font-size: 1em; /* Reset the font size to the default */
+  }
+}
+
 /* Mobile version down here*/
 
 
@@ -291,7 +335,8 @@ body {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  margin-right: 200px; /* Adjust as needed */
+
+
 }
 
 /* Style the dropdown content (hidden by default) */
@@ -305,10 +350,10 @@ body {
   opacity: 0; /* Make it invisible by default */
   transition: opacity 0.5s; /* Add a transition */
   border-radius: 15px;
-  left: 11%;
+  left: 50%;
   transform: translateX(-50%);
 
-  
+
 }
 
 
@@ -344,6 +389,11 @@ body {
 }
 
 
+.dropdown {
+  position: relative;
+  right: 200px; /* Adjust as needed */
+}
+
 
 
 
@@ -353,11 +403,7 @@ body {
     display: none;
   }
 
-  .dropdown {
-    display: block;
-  }
 }
-
 
 
 @media screen and (min-width: 1920px) {
