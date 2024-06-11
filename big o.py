@@ -1,3 +1,5 @@
+"""
+
 
 combination_1and2 = 2000 + 2400 #40 minutes
 
@@ -22,3 +24,25 @@ print(max(combinations)) #2400
 
 
 
+"""
+
+
+class Rocket:
+    def __init__(self, fuel=100):
+        self.fuel = fuel
+
+    def launch(self):
+        if self.fuel > 0:
+            print("Rocket launched")
+            self.fuel -= 20
+        else:
+            print("No fuel")
+
+    def land(self):
+        pass
+
+    def call_home(self):
+        pass
+
+    def radio_message(self):
+        pass
