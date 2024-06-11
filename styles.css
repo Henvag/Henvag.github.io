@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #0004ff !important; /* Changing the background color of the navbar */
+  background-color: #6e40f3 !important; /* Changing the background color of the navbar */
   padding: 0.001px 0; /* Adjust as needed */
   margin: -1px 0; /* Adjust as needed */
 }
@@ -128,7 +128,7 @@ body {
   margin-left: 100px; /* Adjust this value to move the button more or less to the right */
   font-family: 'Circular', sans-serif;
   color: black; /* Change the font color to black */
-  background-color: #6e40f3; /* Change the background color to #6e40f3 */
+  background-color: #5c40f3; /* Change the background color to #6e40f3 */
   text-align: center;
   height: 35px; /* Adjust this value to make the button taller or shorter */
   display: flex;
@@ -329,12 +329,15 @@ body {
 
 /* Style the dropdown button */
 .dropbtn {
-  background-color: #0004ff;
+  background-color: #6e40f3;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+
+
+
 
 
 }
@@ -352,6 +355,7 @@ body {
   border-radius: 15px;
   left: 50%;
   transform: translateX(-50%);
+
 
 
 }
@@ -373,7 +377,7 @@ body {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #6e40f3;
+.dropdown-content a:hover {background-color: #1f2334;
   border-radius: 15px;
 }
 
@@ -384,14 +388,14 @@ body {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #6e40f3;
+  background-color: #5c40f3;
   border-radius: 15px;
 }
 
 
 .dropdown {
   position: relative;
-  right: 200px; /* Adjust as needed */
+  right: 22px; /* Adjust as needed */
 }
 
 
@@ -415,5 +419,22 @@ body {
   }
 }
 
+/* Styles for screens that are less than or equal to 1440px */
+@media (max-width: 1440px) {
+  .jumbotron h1 {
+    font-size: 2em; /* Adjust as needed */
+  }
+  .jumbotron p {
+    font-size: 1em; /* Adjust as needed */
+  }
+}
 
-
+/* Styles for screens that are more than 1440px */
+@media (min-width: 1441px) {
+  .jumbotron h1 {
+    font-size: 3em; /* Reset to the default */
+  }
+  .jumbotron p {
+    font-size: 1em; /* Reset to the default */
+  }
+}
