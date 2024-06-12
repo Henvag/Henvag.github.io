@@ -1,12 +1,13 @@
 .navbar {
-  background-color: #6e40f3 !important; /* Changing the background color of the navbar */
-  padding: 0.001px 0; /* Adjust as needed */
-  margin: -1px 0; /* Adjust as needed */
+  background-color: #6e40f3 !important;
+  padding: 0.001px 0;
+  margin: -1px 0;
 }
+
 .navbar-brand {
-  font-family: 'Anton', sans-serif; /* Applying the Anton font */
-  font-size: 2em; /* Making the text bigger */
-  color: white !important; /* Changing the font color to white */
+  font-family: 'Anton', sans-serif;
+  font-size: 2em;
+  color: white !important;
 }
 
 .navbar-content {
@@ -16,93 +17,84 @@
   width: 100%;
 }
 
-
 .left-content {
   flex: 1;
-
 }
+
 body {
-  background-color: #1F2334; /* Changing the background color to #1F2334 */
+  background-color: #1F2334;
+  zoom: 2;
+  position: relative;
+  min-height: 100vh;
 }
 
 .jumbotron, .container, .footer {
-  background-color: inherit; /* Ensuring these elements keep their original background color */
+  background-color: inherit;
 }
 
 .jumbotron {
-  color: white; /* Changing the text color to white */
+  color: white;
 }
 
 .unique-github {
-  margin-left: 30px; /* Adjust this value to move the GitHub icon more or less to the left */
-
+  margin-left: 30px;
 }
 
 .container {
   display: flex;
-  justify-content: flex-start; /* This will align the items to the start of the container */
+  justify-content: flex-start;
 }
 
 .henvagdev-icon {
-  padding-left: 0;
-
-}
-
-body {
-  zoom: 2;
-  background-color: #1F2334; /* Changing the background color to #1F2334 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* other styles */
 }
 
 .arrow-icon {
   display: block;
-  margin-left: 27px; /* Adjust this value to move the arrow more or less to the left */
+  margin-left: 27px;
   padding-top: 10px;
   height: 50px;
 }
 
-body {
-  position: relative; /* Make the body position relative */
-  min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
-}
-
 .footer {
-  position: fixed; /* Make the footer position fixed */
-  bottom: 0; /* Position the footer at the bottom */
-  width: 100%; /* Make the footer take up the full width */
-  background-color: #000000 !important; /* Changing the background color to black */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000 !important;
 }
 
 .spotify-section {
-  /* position: fixed; Remove this line */
-  right: 20px; /* Adjust this value to move the section more or less to the left */
-  top: 15%; /* Adjust this value to move the section up or down */
+  right: 20px;
+  top: 15%;
 }
+
 .spotify-player {
   width: 300px;
   height: 380px;
 }
 
-
-
 @font-face {
   font-family: 'Circular';
-  src: url('fonts/ProductSans-Black.ttf'); /* Update the URL to match the path to your font file */
+  src: url('fonts/ProductSans-Black.ttf');
 }
 
-
 #login {
-  background-color: #1ed760; /* Spotify green color */
-  color: black; /* Change the font color to black */
+  background-color: #1ed760;
+  color: black;
   border: none;
-  padding: 8px 20px; /* Reduced padding to make the button smaller */
+  padding: 8px 20px;
   text-align: center;
   text-decoration: none;
-  display: block; /* Change to block to allow margins to center the button */
-  font-size: 12px; /* Reduced font size to make the button smaller */
-  margin: 20px auto; /* Increased top margin to move the button down and auto left and right margins to center it horizontally */
+  display: block;
+  font-size: 12px;
+  margin: 20px auto;
   cursor: pointer;
-  border-radius: 25px; /* Slightly rounded corners */
-  font-family: 'Circular', sans-serif; /* Apply the Circular font */
+  border-radius: 25px;
+  font-family: 'Circular', sans-serif;
 }
 
 .navbar-content {
@@ -114,7 +106,7 @@ body {
 
 .left-content {
   display: flex;
-  justify-content: flex-start; /* This will align the items to the start of the container */
+  justify-content: flex-start;
   flex: 1;
 }
 
@@ -125,29 +117,23 @@ body {
 }
 
 .projects-button {
-  margin-left: 100px; /* Adjust this value to move the button more or less to the right */
+  margin-left: 100px;
   font-family: 'Circular', sans-serif;
-  color: black; /* Change the font color to black */
-  background-color: #5c40f3; /* Change the background color to #6e40f3 */
+  color: black;
+  background-color: #5c40f3;
   text-align: center;
-  height: 35px; /* Adjust this value to make the button taller or shorter */
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 9px; /* Adjust this value to move the button up or down */
-
-
+  margin-top: 9px;
 }
-
-
 
 .music-text {
   font-family: 'Circular', sans-serif;
-  color: white; /* This will make the text color white */
-  text-align: center; /* This will center the text */
+  color: white;
+  text-align: center;
 }
-
-
 
 .fade-out {
   transition: opacity 1s;
@@ -159,22 +145,15 @@ body {
   transition: opacity 1s;
 }
 
-
-
-
 .small-spotify-player {
   width: 150px;
   height: 250px;
 }
 
-
-
-
 .menu-image {
-    height: 24px; /* Adjust as needed */
-    width: 24px; /* Adjust as needed */
+  height: 24px;
+  width: 24px;
 }
-
 
 .project {
   width: 300px;
@@ -185,7 +164,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #6e40f3;;
+  background-color: #6e40f3;
 }
 
 .project img {
@@ -195,31 +174,23 @@ body {
   margin: auto;
 }
 
-
-
-
 .project-info h2 {
   text-align: center;
   color: black;
   font: 16px 'Circular', sans-serif;
-
 }
 
 .project-info p {
   text-align: center;
   color: black;
   font: 12px 'Circular', sans-serif;
-
 }
-
-
 
 #top-tracks {
-  margin-top: 20px; /* Add some space above the top tracks */
-  color: white; /* Make the text color white */
-  font-family: 'Circular', sans-serif; /* Use the Circular font */
+  margin-top: 20px;
+  color: white;
+  font-family: 'Circular', sans-serif;
 }
-
 
 .track {
   display: flex;
@@ -241,44 +212,29 @@ body {
 
 .artist-name {
   color: gray;
-   font-size: 8px;
+  font-size: 8px;
 }
-
 
 #audio-player {
-   display: none;
+  display: none;
 }
 
-
-
 #custom-audio-player {
-  /* Style the player to your liking */
-  width: 200px ;
+  width: 200px;
   height: 50px;
 }
 
-#play-pause-button {
-  /* Style the play/pause button to your liking */
-}
+#play-pause-button {}
 
-#progress-bar {
-  /* Style the progress bar to your liking */
-}
-
-
-
-
+#progress-bar {}
 
 .smaller-text {
-  font-size: 0.5em; /* Adjust this value to your liking */
+  font-size: 0.5em;
 }
 
 .hide-element {
   display: none;
 }
-
-
-
 
 .music-box {
   width: 300px;
@@ -286,7 +242,7 @@ body {
   border: 1px solid #6e40f3;
   position: fixed;
   right: 60px;
-  top: 120px; /* Adjust this value to move the box downwards */
+  top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -294,28 +250,21 @@ body {
   background-color: #000000;
 }
 
-
-
-/* Styles for screens that are less than or equal to 1920px */
 @media (max-width: 1920px) {
   .music-box {
     width: 200px;
     height: 200px;
-    font-size: 0.8em; /* Adjust this value to your liking */
+    font-size: 0.8em;
   }
 }
 
-/* Styles for screens that are more than 1920px */
 @media (min-width: 1921px) {
   .music-box {
     width: 300px;
     height: 300px;
-    font-size: 1em; /* Reset the font size to the default */
+    font-size: 1em;
   }
 }
-
-/* Mobile version down here*/
-
 
 @media (max-width: 600px) {
   .spotify-player,
@@ -325,9 +274,6 @@ body {
   }
 }
 
-
-
-/* Style the dropdown button */
 .dropbtn {
   background-color: #6e40f3;
   color: white;
@@ -335,14 +281,8 @@ body {
   font-size: 16px;
   border: none;
   cursor: pointer;
-
-
-
-
-
 }
 
-/* Style the dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -350,25 +290,19 @@ body {
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  opacity: 0; /* Make it invisible by default */
-  transition: opacity 0.5s; /* Add a transition */
+  opacity: 0;
+  transition: opacity 0.5s;
   border-radius: 15px;
   left: 50%;
   transform: translateX(-50%);
-
-
-
 }
 
-
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
-  opacity: 1; /* Make it fully visible when hovered over */
+  opacity: 1;
   background-color: #000000;
 }
 
-/* Style the links inside the dropdown */
 .dropdown-content a {
   color: #ffffff;
   padding: 12px 16px;
@@ -376,39 +310,31 @@ body {
   display: block;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #1f2334;
+.dropdown-content a:hover {
+  background-color: #1f2334;
   border-radius: 15px;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #5c40f3;
   border-radius: 15px;
 }
 
-
 .dropdown {
   position: relative;
-  right: 22px; /* Adjust as needed */
+  right: 22px;
 }
-
-
-
 
 @media (max-width: 600px) {
   .github-logo,
   .projects-logo {
     display: none;
   }
-
 }
-
 
 @media screen and (min-width: 1920px) {
   .scale-content {
@@ -419,22 +345,107 @@ body {
   }
 }
 
-/* Styles for screens that are less than or equal to 1440px */
 @media (max-width: 1440px) {
   .jumbotron h1 {
-    font-size: 2em; /* Adjust as needed */
+    font-size: 2em;
   }
   .jumbotron p {
-    font-size: 1em; /* Adjust as needed */
+    font-size: 1em;
   }
 }
 
-/* Styles for screens that are more than 1440px */
 @media (min-width: 1441px) {
   .jumbotron h1 {
-    font-size: 3em; /* Reset to the default */
+    font-size: 3em;
   }
   .jumbotron p {
-    font-size: 1em; /* Reset to the default */
+    font-size: 1em;
   }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Adjust as needed */
+  height: 20px; /* Adjust as needed */
+  transform: translateX(-200px); /* This will shift the switch button 20px to the left */
+  top: 6px; /* Adjust as needed */
+
+}
+
+.language-label {
+  position: absolute;
+  right: 3px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%); /* This will vertically center the text */
+  font-size: 10px; /* Adjust as needed to change the size of the text */
+  /* Add any additional styling for the text here */
+  font-family: 'Circular', sans-serif;
+
+
+}
+
+
+.language-label-en {
+  position: absolute;
+  left: 6px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%); /* This will vertically center the text */
+  font-size: 10px; /* Adjust as needed to change the size of the text */
+  display: none; /* Hide the text initially */
+  font-family: 'Circular', sans-serif;
+}
+
+
+
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px; /* Adjust to match the height of the .switch class */
+  width: 30px; /* Adjust to match the width of the .switch class */
+  left: 0px; /* Adjust to start from the edge */
+  bottom: 0px; /* Adjust to start from the edge */
+  background-image: url('norway.png'); /* Add your English flag image path here */
+  background-size: 100% 100%; /* This will stretch the image to fill the slider */
+  transition: .4s;
+}
+input:checked + .slider {
+
+
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px); /* Adjust as needed */
+  background-image: url('english.png'); /* Add your English flag image path here */
+
+
+
+  background-size: 100% 100%; /* This will stretch the image to fill the slider */
+}
+
+.slider.round {
+  border-radius: 20px; /* Adjust as needed */
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

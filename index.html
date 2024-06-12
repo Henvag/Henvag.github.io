@@ -31,7 +31,19 @@
         <div class="right-content"></div>
       </div>
 
+
+
+
+ <label class="switch">
+  <input type="checkbox" id="language-switcher">
+  <span class="slider round"></span>
+  <span id="language-label" class="language-label">NO</span>
+  <span id="language-label-en" class="language-label-en">EN</span>
+</label>
+
       <div class="dropdown">
+
+
     <button class="dropbtn">
          <img src="menu.png" alt="Menu" class="menu-image">
     </button>
@@ -124,6 +136,58 @@
 });
     </script>
 
+
+    <script>
+// Define the text content for both languages
+const languagePack = {
+  english: {
+    'display-4': "About me:",
+    'lead': "Student in Information Science at the University of Bergen",
+    // Add more key-value pairs for all the text elements on your website
+  },
+  norsk: {
+    'display-4': "Om meg:",
+    'lead': "Student i informasjonsvitenskap ved Universitetet i Bergen",
+    // Add the Norwegian translations for all the text elements
+  }
+};
+
+// Initialize the current language as English
+let currentLanguage = 'english';
+
+// Add an event listener to the language switcher button
+document.getElementById('language-switcher').addEventListener('change', function() {
+  // Toggle the current language
+  currentLanguage = this.checked ? 'norsk' : 'english';
+
+  // Update the text of the label
+  document.getElementById('language-label').textContent = this.checked ? 'EN' : 'NO';
+
+  // Update the text content of the website based on the selected language
+  for (let key in languagePack[currentLanguage]) {
+    document.querySelector(`.${key}`).textContent = languagePack[currentLanguage][key];
+  }
+});
+
+// Add an event listener to the language switcher button
+document.getElementById('language-switcher').addEventListener('change', function() {
+  // Get the "NO" and "EN" text elements
+  var noText = document.getElementById('language-label');
+  var enText = document.getElementById('language-label-en');
+
+  if (this.checked) {
+    // If the switch is checked, hide the "NO" text and show the "EN" text
+    noText.style.display = 'none';
+    enText.style.display = 'block';
+  } else {
+    // If the switch is not checked, show the "NO" text and hide the "EN" text
+    noText.style.display = 'block';
+    enText.style.display = 'none';
+  }
+});
+
+    </script>
+
   <script>
   // Select the dropdown menu's "Projects" link
 var dropdownProjects = document.querySelector('#dropdown-projects');
@@ -168,6 +232,7 @@ dropdownProjects.addEventListener('click', function(event) {
   }, 1000); // The duration of the animation in milliseconds
 });
 </script>
+
 
 
   </body>
