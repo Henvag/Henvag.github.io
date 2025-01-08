@@ -1,3 +1,4 @@
+// filepath: /index.html
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,11 +11,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-
-
-     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <title>Henvag Personal Website 🔥</title>
   </head>
   <body>
@@ -24,216 +21,170 @@
           <a href="https://github.com/Henvag">
             <img src="github.png" alt="Icon" style="height:50px;" class="github-icon unique-github">
           </a>
-          <a class="btn btn-primary projects-button" href="#" role="button">Projects</a>
+          <a class="btn btn-primary projects-button" href="#" role="button"
+             data-en-projects="Projects"
+             data-no-projects="Prosjekter"
+             data-en-home="Home"
+             data-no-home="Hjem">Projects</a>
         </div>
         <a href="https://henvag.github.io/">
-        <img src="henvagdevborder.jpg" alt="Logo" style="height:50px;" class="henvagdev-icon"> </a>
+          <img src="henvagdevborder.jpg" alt="Logo" style="height:50px;" class="henvagdev-icon">
+        </a>
         <div class="right-content"></div>
       </div>
 
-
-
-
- <label class="switch">
-  <input type="checkbox" id="language-switcher">
-  <span class="slider round"></span>
-  <span id="language-label" class="language-label">NO</span>
-  <span id="language-label-en" class="language-label-en">EN</span>
-</label>
+      <label class="switch">
+        <input type="checkbox" id="language-switcher">
+        <span class="slider round"></span>
+        <span id="language-label" class="language-label">NO</span>
+        <span id="language-label-en" class="language-label-en">EN</span>
+      </label>
 
       <div class="dropdown">
-
-
-    <button class="dropbtn">
-         <img src="menu.png" alt="Menu" class="menu-image">
-    </button>
-    <div class="dropdown-content">
-      <a href="https://github.com/Henvag">GitHub</a>
-      <a href="#" id="dropdown-projects">Projects</a>
-    </div>
-</div>
-    </nav>
-<div class="music-box">
-    <div class="spotify-section">
- <p class="music-text">Enjoy some music while browsing! <br><span class="smaller-text">(Your top 5 tracks)</span></p>
-        <audio id="audio-player" controls></audio>
-
-
-  <div id="top-tracks"></div> <!-- New div for displaying the user's top tracks -->
-        <button id="login">Login with Spotify</button>
-</div >
-</div>
-    <div class="main-content">
-      <img src="arrow.png" alt="Arrow" class="arrow-icon">
-
-      <div class="jumbotron">
-        <h1 class="display-4">About me:</h1>
-        <p class="lead">Student in Information Science at the University of Bergen</p>
-        <hr class="my-4">
-        <p>This page is mainly for showing what i am working on, and have done previously :)</p>
-        <div class="d-flex justify-content-center"></div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-
+        <button class="dropbtn">
+          <img src="menu.png" alt="Menu" class="menu-image">
+        </button>
+        <div class="dropdown-content">
+          <a href="https://github.com/Henvag">GitHub</a>
+          <a href="#" id="dropdown-projects"
+             data-en-projects="Projects"
+             data-no-projects="Prosjekter"
+             data-en-home="Home"
+             data-no-home="Hjem">Projects</a>
         </div>
       </div>
+    </nav>
 
+    <div class="music-box">
+      <div class="spotify-section">
+        <p class="music-text">Enjoy some music while browsing! <br><span class="smaller-text">(Your top 5 tracks)</span></p>
+        <audio id="audio-player" controls></audio>
+        <div id="top-tracks"></div>
+        <button id="login">Login with Spotify</button>
+      </div>
+    </div>
 
+    <div class="main-content">
+      <img src="arrow.png" alt="Arrow" class="arrow-icon">
+      <div class="jumbotron">
+        <h1 class="display-4" data-en="About me:" data-no="Om meg:">About me:</h1>
+        <p class="lead" data-en='Student in <a href="https://www.uib.no/en/studies/BASV-INFO" target="_blank">Information Science</a> at the University of Bergen'
+           data-no='Student i <a href="https://www.uib.no/studier/BASV-INFO" target="_blank">Informasjonsvitenskap</a> ved Universitetet i Bergen'>
+          Student in <a href="https://www.uib.no/en/studies/BASV-INFO" target="_blank">Information Science</a> at the University of Bergen
+        </p>
+        <hr class="my-4">
+        <p data-en="This page is mainly for showing what I am working on, and have done previously :)"
+           data-no="Denne siden er hovedsakelig for å vise hva jeg jobber med, og har gjort tidligere :)">
+          This page is mainly for showing what I am working on, and have done previously :)
+        </p>
+        <div class="d-flex justify-content-center"></div>
+      </div>
+      <div class="container">
+        <div class="row"></div>
+      </div>
     </div>
 
     <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-          <span class="text-muted">Made by Henvag 2024</span>
-        </div>
-      </footer>
+      <div class="container">
+        <span class="text-muted">Made by Henvag 2025</span>
+      </div>
+    </footer>
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="spotify.js"></script>
 
-
     <script>
-     document.querySelector('.projects-button').addEventListener('click', function(event) {
-  event.preventDefault(); // Prevent the default action
+      let currentLanguage = localStorage.getItem('siteLanguage') || 'english';
+document.getElementById('language-switcher').checked = (currentLanguage === 'norsk');
 
-  var button = document.querySelector('.projects-button');
-  var pageToFetch = button.textContent === 'Projects' ? 'projects.html' : 'main-content.html';
-  var mainContent = document.querySelector('.main-content');
+// Store original content
+const originalContent = document.querySelector('.main-content').innerHTML;
 
-  // Add the 'fade-out' class to start the animation
-  mainContent.classList.add('fade-out');
+function updateContent() {
+  const button = document.querySelector('.projects-button');
+  const dropdownProject = document.querySelector('#dropdown-projects');
+  const isProjectsPage = document.querySelector('.project-info');
 
-  // Wait for the animation to complete before fetching the new page
-  setTimeout(function() {
-    fetch(pageToFetch) // Fetch the content of the new page
-      .then(response => response.text())
-      .then(data => {
-        // Create a new div and add the new content to it
-        var newContent = document.createElement('div');
-        newContent.innerHTML = data;
-        newContent.classList.add('main-content');
-
-        // Replace the old '.main-content' div with the new one
-        mainContent.parentNode.replaceChild(newContent, mainContent);
-
-        // Add the 'fade-in' class to start the animation
-        newContent.classList.add('fade-in');
-
-        // Remove the 'fade-in' class after the animation is complete
-        setTimeout(function() {
-          newContent.classList.remove('fade-in');
-        }, 1000); // The duration of the animation in milliseconds
-      });
-
-    button.textContent = button.textContent === 'Projects' ? 'Home' : 'Projects';
-  }, 1000); // The duration of the animation in milliseconds
-});
-    </script>
-
-
-    <script>
-// Define the text content for both languages
-const languagePack = {
-  english: {
-    'display-4': "About me:",
-    'lead': "Student in Information Science at the University of Bergen",
-    // Add more key-value pairs for all the text elements on your website
-  },
-  norsk: {
-    'display-4': "Om meg:",
-    'lead': "Student i informasjonsvitenskap ved Universitetet i Bergen",
-    // Add the Norwegian translations for all the text elements
+  // Update button and dropdown text
+  if (button && dropdownProject) {
+    const buttonAttr = isProjectsPage ?
+      (currentLanguage === 'english' ? 'data-en-home' : 'data-no-home') :
+      (currentLanguage === 'english' ? 'data-en-projects' : 'data-no-projects');
+    button.textContent = button.getAttribute(buttonAttr);
+    dropdownProject.textContent = button.getAttribute(buttonAttr);
   }
-};
 
-// Initialize the current language as English
-let currentLanguage = 'english';
+  // Update other elements
+  document.querySelectorAll('[data-en]').forEach(element => {
+    element.innerHTML = element.getAttribute(currentLanguage === 'english' ? 'data-en' : 'data-no');
+  });
 
-// Add an event listener to the language switcher button
-document.getElementById('language-switcher').addEventListener('change', function() {
-  // Toggle the current language
-  currentLanguage = this.checked ? 'norsk' : 'english';
-
-  // Update the text of the label
-  document.getElementById('language-label').textContent = this.checked ? 'EN' : 'NO';
-
-  // Update the text content of the website based on the selected language
-  for (let key in languagePack[currentLanguage]) {
-    document.querySelector(`.${key}`).textContent = languagePack[currentLanguage][key];
-  }
-});
-
-// Add an event listener to the language switcher button
-document.getElementById('language-switcher').addEventListener('change', function() {
-  // Get the "NO" and "EN" text elements
-  var noText = document.getElementById('language-label');
-  var enText = document.getElementById('language-label-en');
-
-  if (this.checked) {
-    // If the switch is checked, hide the "NO" text and show the "EN" text
+  // Update language labels
+  const noText = document.getElementById('language-label');
+  const enText = document.getElementById('language-label-en');
+  if (currentLanguage === 'norsk') {
     noText.style.display = 'none';
     enText.style.display = 'block';
   } else {
-    // If the switch is not checked, show the "NO" text and hide the "EN" text
     noText.style.display = 'block';
     enText.style.display = 'none';
   }
+}
+
+document.getElementById('language-switcher').addEventListener('change', function() {
+  currentLanguage = this.checked ? 'norsk' : 'english';
+  localStorage.setItem('siteLanguage', currentLanguage);
+  updateContent();
+});
+
+document.querySelector('.projects-button').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  const isProjectsPage = document.querySelector('.project-info');
+  const mainContent = document.querySelector('.main-content');
+
+  // Prevent multiple clicks
+  if (mainContent.classList.contains('fade-out') || mainContent.classList.contains('fade-in')) {
+    return;
+  }
+
+  // Start fade out
+  mainContent.classList.add('fade-out');
+
+  // Wait for fade out to complete
+  setTimeout(() => {
+    // Update content
+    if (isProjectsPage) {
+      mainContent.innerHTML = originalContent;
+      // Update language before starting fade in
+      updateContent();
+    } else {
+      fetch('projects.html')
+        .then(response => response.text())
+        .then(data => {
+          mainContent.innerHTML = data;
+          // Update language before starting fade in
+          updateContent();
+        });
+    }
+
+    // Remove fade out class
+    mainContent.classList.remove('fade-out');
+
+    // Start fade in after content and language are updated
+    requestAnimationFrame(() => {
+      mainContent.classList.add('fade-in');
+
+      // Cleanup fade in class
+      setTimeout(() => {
+        mainContent.classList.remove('fade-in');
+      }, 500);
+    });
+  }, 500);
 });
 
     </script>
-
-  <script>
-  // Select the dropdown menu's "Projects" link
-var dropdownProjects = document.querySelector('#dropdown-projects');
-
-// Add the same event listener as the one on the normal "Projects" button
-dropdownProjects.addEventListener('click', function(event) {
-  event.preventDefault(); // Prevent the default action
-
-  var button = document.querySelector('.projects-button');
-  var pageToFetch = button.textContent === 'Projects' ? 'projects.html' : 'main-content.html';
-  var mainContent = document.querySelector('.main-content');
-
-  // Add the 'fade-out' class to start the animation
-  mainContent.classList.add('fade-out');
-
-  // Wait for the animation to complete before fetching the new page
-  setTimeout(function() {
-    fetch(pageToFetch) // Fetch the content of the new page
-      .then(response => response.text())
-      .then(data => {
-        // Create a new div and add the new content to it
-        var newContent = document.createElement('div');
-        newContent.innerHTML = data;
-        newContent.classList.add('main-content');
-
-        // Replace the old '.main-content' div with the new one
-        mainContent.parentNode.replaceChild(newContent, mainContent);
-
-        // Add the 'fade-in' class to start the animation
-        newContent.classList.add('fade-in');
-
-        // Remove the 'fade-in' class after the animation is complete
-        setTimeout(function() {
-          newContent.classList.remove('fade-in');
-        }, 1000); // The duration of the animation in milliseconds
-      });
-
-    // Change the text of both the button and the dropdown link
-    var newText = button.textContent === 'Projects' ? 'Home' : 'Projects';
-    button.textContent = newText;
-    dropdownProjects.textContent = newText;
-  }, 1000); // The duration of the animation in milliseconds
-});
-</script>
-
-
-
   </body>
 </html>

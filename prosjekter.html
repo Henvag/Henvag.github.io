@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="project">
+      <div class="project-info">
+        <h2 class="project-title">Developer Portfolio Website</h2>
+        <img src="website.png" alt="Project image">
+        <p class="project-description">This website is of course one of the projects!<br> I used the Spotify API with Flask to handle Oauth, and the Bootstrap framework for styling.<br> <br><a href="https://github.com/Henvag/Henvag.github.io"> GitHub</a></p>
+      </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Made by Henvag 2024</span>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+      const languagePack = {
+        english: {
+          'project-title': "Developer Portfolio Website",
+          'project-description': "This website is of course one of the projects!<br> I used the Spotify API with Flask to handle Oauth, and the Bootstrap framework for styling.<br> <br><a href=\"https://github.com/Henvag/Henvag.github.io\"> GitHub</a>"
+        },
+        norsk: {
+          'project-title': "Utviklerportefølje Nettsted",
+          'project-description': "Dette nettstedet er selvfølgelig et av prosjektene!<br> Jeg brukte Spotify API med Flask for å håndtere Oauth, og Bootstrap-rammeverket for styling.<br> <br><a href=\"https://github.com/Henvag/Henvag.github.io\"> GitHub</a>"
+        }
+      };
+
+      let currentLanguage = 'english';
+
+      function updateButtonText() {
+        document.querySelector('.project-title').textContent = languagePack[currentLanguage]['project-title'];
+        document.querySelector('.project-description').innerHTML = languagePack[currentLanguage]['project-description'];
+      }
+
+      document.getElementById('language-switcher').addEventListener('change', function() {
+        currentLanguage = this.checked ? 'norsk' : 'english';
+        document.getElementById('language-label').textContent = this.checked ? 'EN' : 'NO';
+        updateButtonText();
+      });
+
+      updateButtonText();
+    </script>
+</body>
+</html>
