@@ -1,25 +1,38 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-
-REDIRECT_URI = 'https://henvag.github.io'  # Replace with your redirect URI
-
 app = Flask(__name__)
-CORS(app)  # This will enable CORS for all routes
+CORS(app, resources={
+    r"/*": {
+        "origins": ["http://localhost:63342"],
+        "methods": ["GET", "POST"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
+REDIRECT_URI = 'http://localhost:63342/Henvag.github.io/callback'
 @app.route('/')
 def home():
-    return "Spotify Connected!"
+    return "Spotify Auth Server Running"
+
 
 @app.route('/callback')
 def callback():
     code = request.args.get('code')
-    # Here you can add the code to handle the authorization code received from Spotify
-    # For example, you could call your getAccessToken function here
-    return "Received authorization code: " + code
+    if not code:
+        return jsonify({"error": "No code provided"}), 400
+
+    # Exchange code for token
+    response = requests.post('https://accounts.spotify.com/api/token', data={
+        'grant_type': 'authorization_code',
+        'code': code,
+        'redirect_uri': REDIRECT_URI,
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET
+    })
+
+    return response.json()
+
 
 if __name__ == '__main__':
-    try:
-        app.run(port=5000)
-    except PermissionError:
-        print("You don't have the necessary permissions to bind to port 80.")
+    app.run(port=5000, debug=True)
