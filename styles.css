@@ -1,14 +1,26 @@
 
-
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centers the button horizontally */
+  margin-top: -60px;       /* Adjusts the space above the button */
+}
 
 /* Enhanced Music Box Styles */
 .music-box {
   max-width: 400px;
   margin: 20px auto;
   padding: 20px;
-  background: #f8f9fa;
+  background: #000000; /* Updated to match your existing background */
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  right: 60px;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .spotify-section {
@@ -20,9 +32,10 @@
 
 .music-text {
   text-align: center;
-  margin: 0;
+  margin: 30px 0 0 0; /* Increased top margin */
   font-size: 1.2rem;
-  color: #333;
+  color: white;
+  font-family: 'Circular', sans-serif;
 }
 
 .smaller-text {
@@ -95,7 +108,8 @@
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.2s ease;
-
+  margin: 10px auto; /* Reduced top margin from 20px to 10px */
+  font-family: 'Circular', sans-serif;
 }
 
 #login:hover {
@@ -281,6 +295,8 @@ body {
   font-family: 'Circular', sans-serif;
   color: white;
   text-align: center;
+  margin-top: 30px;
+
 }
 
 .fade-out {

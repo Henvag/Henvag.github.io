@@ -39,9 +39,17 @@ function redirectToSpotify() {
 async function handleSpotifyCallback(code) {
     try {
         const accessToken = await getAccessToken(code);
+        displayLoggedInState();
         await getUserTopTracks(accessToken);
     } catch (error) {
         console.error('Error in Spotify callback:', error);
+    }
+}
+
+function displayLoggedInState() {
+    const loginButton = document.getElementById('login');
+    if (loginButton) {
+        loginButton.style.display = 'none';
     }
 }
 
