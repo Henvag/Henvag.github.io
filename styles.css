@@ -95,6 +95,7 @@
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.2s ease;
+
 }
 
 #login:hover {
@@ -395,6 +396,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #000000;
+  margin: 200px;
 }
 
 @media (max-width: 1920px) {
