@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+     <!-- Add Lottie Player Script -->
+    <script src="https://cdn.lottielab.com/s/lottie-player@1.x/player-web.min.js"></script>
+
     <title>Henvag Personal Website 🔥</title>
   </head>
   <body>
@@ -56,22 +60,26 @@
     </nav>
 
    <div class="music-box">
-      <div class="spotify-section">
+    <div class="spotify-section">
+        <!-- Add this div for the Lottie animation -->
+        <div class="lottie-container">
+            <lottie-player
+                src="https://cdn.lottielab.com/l/42XGNSwhVD2xuV.json"
+                loop
+                autoplay
+            ></lottie-player>
+        </div>
         <p class="music-text">
-          Enjoy some music while browsing! <br>
-          <span class="smaller-text">(Your top 5 tracks)</span>
+            Enjoy some music while browsing! <br>
+            <span class="smaller-text">(Your top 5 tracks)</span>
         </p>
         <audio id="audio-player" controls></audio>
         <div id="top-tracks"></div>
-
-        <!-- Wrapped Login Button in a Container -->
         <div class="login-container">
-          <button id="login" onclick="console.log('HTML inline onclick test')">
-            Login with Spotify
-          </button>
+            <button id="login">Login with Spotify</button>
         </div>
-      </div>
     </div>
+</div>
 
     <div class="main-content">
       <img src="arrow.png" alt="Arrow" class="arrow-icon">
@@ -103,6 +111,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="spotify.js"></script>
+    <script src="drag.js"></script> <!-- Added drag.js -->
 
     <script>
       let currentLanguage = localStorage.getItem('siteLanguage') || 'english';

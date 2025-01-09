@@ -39,8 +39,9 @@ function redirectToSpotify() {
 async function handleSpotifyCallback(code) {
     try {
         const accessToken = await getAccessToken(code);
-        displayLoggedInState();
         await getUserTopTracks(accessToken);
+        displayLoggedInState();
+        document.querySelector('.music-box').classList.add('expanded');
     } catch (error) {
         console.error('Error in Spotify callback:', error);
     }

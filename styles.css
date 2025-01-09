@@ -6,21 +6,71 @@
   margin-top: -60px;       /* Adjusts the space above the button */
 }
 
+
+.lottie-container {
+    position: absolute;
+    top: 1px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+
+.lottie-container lottie-player {
+    width: 100%;
+    height: 100%;
+}
+
+
+
 /* Enhanced Music Box Styles */
 .music-box {
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
-  background: #000000; /* Updated to match your existing background */
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  right: 60px;
-  top: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    padding: 15px;
+    min-width: 200px;
+    max-width: 400px;
+    width: 200px;
+    height: 200px;
+    transition: all 0.3s ease;
+
+
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+
+.music-box.expanded {
+    width: 300px;
+    height: 400px;
+}
+
+@media (min-width: 1921px) {
+    .music-box.expanded {
+        width: 400px;
+        height: 500px;
+    }
+}
+
+
+
+.music-box.dragging {
+    cursor: grabbing;
+    opacity: 0.95;
+}
+
+/* Ensure controls remain clickable */
+.music-box audio,
+.music-box button {
+    cursor: auto;
 }
 
 .spotify-section {
@@ -49,10 +99,12 @@
 }
 
 #top-tracks {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
 }
 
 .track-item {
