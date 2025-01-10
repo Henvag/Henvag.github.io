@@ -42,6 +42,7 @@ async function handleSpotifyCallback(code) {
         await getUserTopTracks(accessToken);
         displayLoggedInState();
         document.querySelector('.music-box').classList.add('expanded');
+        document.querySelector('.music-text').style.display = 'none'; // Hide welcome text
     } catch (error) {
         console.error('Error in Spotify callback:', error);
     }
@@ -91,12 +92,14 @@ async function getUserTopTracks(accessToken) {
     displayTracks(data.items.slice(0, 5));
 }
 
-function displayTracks(tracks) {
-    const topTracksDiv = document.getElementById('top-tracks');
-    topTracksDiv.innerHTML = '';
-    tracks.forEach((track, index) => {
-        const trackElement = document.createElement('div');
-        trackElement.textContent = `${index + 1}. ${track.name} by ${track.artists.map(artist => artist.name).join(', ')}`;
-        topTracksDiv.appendChild(trackElement);
-    });
+function displayTrack(track, index) {
+    return `
+        <div class="track-item">
+            <img src="${track.album.images[2].url}" alt="${track.name}" class="track-image">
+            <div class="track-info">
+                <p class="track-title">${track.name}</p>
+                <p class="track-artist">${track.artists[0].name}</p>
+            </div>
+        </div>
+    `;
 }

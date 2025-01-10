@@ -1,4 +1,4 @@
-// filepath: /index.html s
+// filepath: /index.html
 <!doctype html>
 <html lang="en">
   <head>
@@ -112,97 +112,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="spotify.js"></script>
     <script src="drag.js"></script> <!-- Added drag.js -->
-
-    <script>
-      let currentLanguage = localStorage.getItem('siteLanguage') || 'english';
-document.getElementById('language-switcher').checked = (currentLanguage === 'norsk');
-
-// Store original content
-const originalContent = document.querySelector('.main-content').innerHTML;
-
-function updateContent() {
-  const button = document.querySelector('.projects-button');
-  const dropdownProject = document.querySelector('#dropdown-projects');
-  const isProjectsPage = document.querySelector('.project-info');
-
-  // Update button and dropdown text
-  if (button && dropdownProject) {
-    const buttonAttr = isProjectsPage ?
-      (currentLanguage === 'english' ? 'data-en-home' : 'data-no-home') :
-      (currentLanguage === 'english' ? 'data-en-projects' : 'data-no-projects');
-    button.textContent = button.getAttribute(buttonAttr);
-    dropdownProject.textContent = button.getAttribute(buttonAttr);
-  }
-
-  // Update other elements
-  document.querySelectorAll('[data-en]').forEach(element => {
-    element.innerHTML = element.getAttribute(currentLanguage === 'english' ? 'data-en' : 'data-no');
-  });
-
-  // Update language labels
-  const noText = document.getElementById('language-label');
-  const enText = document.getElementById('language-label-en');
-  if (currentLanguage === 'norsk') {
-    noText.style.display = 'none';
-    enText.style.display = 'block';
-  } else {
-    noText.style.display = 'block';
-    enText.style.display = 'none';
-  }
-}
-
-document.getElementById('language-switcher').addEventListener('change', function() {
-  currentLanguage = this.checked ? 'norsk' : 'english';
-  localStorage.setItem('siteLanguage', currentLanguage);
-  updateContent();
-});
-
-document.querySelector('.projects-button').addEventListener('click', function(event) {
-  event.preventDefault();
-
-  const isProjectsPage = document.querySelector('.project-info');
-  const mainContent = document.querySelector('.main-content');
-
-  // Prevent multiple clicks
-  if (mainContent.classList.contains('fade-out') || mainContent.classList.contains('fade-in')) {
-    return;
-  }
-
-  // Start fade out
-  mainContent.classList.add('fade-out');
-
-  // Wait for fade out to complete
-  setTimeout(() => {
-    // Update content
-    if (isProjectsPage) {
-      mainContent.innerHTML = originalContent;
-      // Update language before starting fade in
-      updateContent();
-    } else {
-      fetch('projects.html')
-        .then(response => response.text())
-        .then(data => {
-          mainContent.innerHTML = data;
-          // Update language before starting fade in
-          updateContent();
-        });
-    }
-
-    // Remove fade out class
-    mainContent.classList.remove('fade-out');
-
-    // Start fade in after content and language are updated
-    requestAnimationFrame(() => {
-      mainContent.classList.add('fade-in');
-
-      // Cleanup fade in class
-      setTimeout(() => {
-        mainContent.classList.remove('fade-in');
-      }, 500);
-    });
-  }, 500);
-});
-
-    </script>
+    <script src="language.js"></script>
   </body>
 </html>
