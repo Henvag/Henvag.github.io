@@ -114,29 +114,28 @@
 .track-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px;
+    gap: 8px;
+    padding: 6px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease;
+    margin-bottom: 5px;
 }
 
 .track-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
 }
 
-
 .track-item:hover {
-  background: #f0f0f0;
-  transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .track-item.playing {
-  background: #e3f2fd;
-  border-color: #90caf9;
+    background: rgba(29, 185, 84, 0.3);
+    border: 1px solid #1DB954;
 }
 
 .track-number {
@@ -150,17 +149,20 @@
     flex: 1;
 }
 
+
 .track-title {
     color: white;
     margin: 0;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
+    line-height: 1.2;
 }
 
 .track-artist {
     color: #b3b3b3;
     margin: 0;
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 1.2;
 }
 
 #login {

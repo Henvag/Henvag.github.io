@@ -44,7 +44,7 @@ function displayTracks(tracks) {
 function redirectToSpotify() {
     const clientId = 'b717312e3a904a39943442f7f6f11b4b';
     const redirectUri = 'https://henvag.github.io';
-    const scopes = 'user-top-read';
+    const scopes = 'user-top-read user-read-playback-state streaming'; // Added scopes
 
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}&show_dialog=true`;
     console.log("Redirecting to Spotify:", authUrl);
@@ -113,6 +113,7 @@ async function getUserTopTracks(accessToken) {
 
 // Display individual track with image and info
 function displayTrack(track, index) {
+    console.log('Preview URL:', track.preview_url); // Debug preview URL
     return `
         <div class="track-item" data-preview-url="${track.preview_url}" onclick="playTrack(this)">
             <img src="${track.album.images[2].url}" alt="${track.name}" class="track-image">
