@@ -101,8 +101,7 @@ async function getAccessToken(code) {
 
 // Get user's top tracks from Spotify
 async function getUserTopTracks(accessToken) {
-    // Add market parameter to get previews
-    const response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&market=US', {
+    const response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&market=US&limit=5', {
         headers: { 'Authorization': `Bearer ${accessToken}` }
     });
 
@@ -112,7 +111,11 @@ async function getUserTopTracks(accessToken) {
     }
 
     const data = await response.json();
-    displayTracks(data.items.slice(0, 5));
+    // Debug preview URLs
+    data.items.forEach(track => {
+        console.log(`Track: ${track.name}, Preview URL: ${track.preview_url}`);
+    });
+    displayTracks(data.items);
 }
 
 // Display individual track with image and info
@@ -131,18 +134,37 @@ function displayTrack(track, index) {
 
 
 async function playTrack(previewUrl, uri, element) {
+    console.log('Attempting to play:', { previewUrl, uri });
     const audioPlayer = document.getElementById('audio-player');
 
     if (previewUrl) {
         try {
+            console.log('Setting audio source to:', previewUrl);
             audioPlayer.src = previewUrl;
+            audioPlayer.load(); // Ensure audio is loaded
+
+            // Add event listeners for debugging
+            audioPlayer.addEventListener('error', (e) => {
+                console.error('Audio player error:', e);
+            });
+
+            audioPlayer.addEventListener('loadstart', () => {
+                console.log('Audio loading started');
+            });
+
+            audioPlayer.addEventListener('canplay', () => {
+                console.log('Audio can play');
+            });
+
             await audioPlayer.play();
+            console.log('Audio playback started');
             updatePlayingState(element);
         } catch (error) {
-            console.log('Preview playback failed, trying full track');
+            console.error('Preview playback failed:', error);
             await playFullTrack(uri, element);
         }
     } else {
+        console.log('No preview URL available, trying full track');
         await playFullTrack(uri, element);
     }
 }
