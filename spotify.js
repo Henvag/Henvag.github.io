@@ -114,7 +114,7 @@ async function getUserTopTracks(accessToken) {
 // Display individual track with image and info
 function displayTrack(track, index) {
     return `
-        <div class="track-item">
+        <div class="track-item" data-preview-url="${track.preview_url}" onclick="playTrack(this)">
             <img src="${track.album.images[2].url}" alt="${track.name}" class="track-image">
             <div class="track-info">
                 <p class="track-title">${track.name}</p>
@@ -122,4 +122,20 @@ function displayTrack(track, index) {
             </div>
         </div>
     `;
+}
+
+function playTrack(element) {
+    const previewUrl = element.dataset.previewUrl;
+    const audioPlayer = document.getElementById('audio-player');
+
+    if (previewUrl) {
+        audioPlayer.src = previewUrl;
+        audioPlayer.play();
+
+        // Highlight playing track
+        document.querySelectorAll('.track-item').forEach(item => {
+            item.classList.remove('playing');
+        });
+        element.classList.add('playing');
+    }
 }
