@@ -165,6 +165,13 @@
     line-height: 1.2;
 }
 
+
+.no-preview-text {
+    color: #ff4444;
+    font-size: 9px;
+    display: block;
+}
+
 #login {
   padding: 10px 20px;
   background: #1DB954;

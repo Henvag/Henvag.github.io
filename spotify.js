@@ -98,7 +98,7 @@ async function getAccessToken(code) {
 
 // Get user's top tracks from Spotify
 async function getUserTopTracks(accessToken) {
-    const response = await fetch('https://api.spotify.com/v1/me/top/tracks', {
+    const response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term', {
         headers: { 'Authorization': `Bearer ${accessToken}` }
     });
 
@@ -108,45 +108,55 @@ async function getUserTopTracks(accessToken) {
     }
 
     const data = await response.json();
-    console.log('Track data:', data.items); // Debug track data
+    // Debug preview URLs
+    data.items.forEach((track, i) => {
+        console.log(`Track ${i + 1}: ${track.name}`);
+        console.log(`Preview URL: ${track.preview_url}`);
+    });
     displayTracks(data.items.slice(0, 5));
 }
 
 // Display individual track with image and info
 function displayTrack(track, index) {
-    console.log(`Track ${index} preview URL:`, track.preview_url);
+    // Ensure preview URL is not null before creating element
+    if (!track.preview_url) {
+        console.log(`No preview URL for track: ${track.name}`);
+    }
+
     return `
-        <div class="track-item" onclick="playPreview('${track.preview_url}', this)">
+        <div class="track-item" onclick="playPreview('${track.preview_url || ''}', this)">
             <img src="${track.album.images[2].url}" alt="${track.name}" class="track-image">
             <div class="track-info">
                 <p class="track-title">${track.name}</p>
                 <p class="track-artist">${track.artists[0].name}</p>
+                ${!track.preview_url ? '<span class="no-preview-text">No preview available</span>' : ''}
             </div>
         </div>
     `;
 }
 
 function playPreview(previewUrl, element) {
-    console.log('Attempting to play:', previewUrl);
-    const audioPlayer = document.getElementById('audio-player');
-
     if (!previewUrl) {
-        console.log('No preview URL available for this track');
+        console.log('Preview URL is missing');
         return;
     }
 
-    // Update audio source and play
-    audioPlayer.src = previewUrl;
-    audioPlayer.play()
-        .then(() => {
-            console.log('Playback started');
-            // Add playing class to clicked element
-            document.querySelectorAll('.track-item').forEach(item => {
-                item.classList.remove('playing');
-            });
-            element.classList.add('playing');
-        })
-        .catch(error => {
-            console.error('Playback failed:', error);
-        });
+    const audioPlayer = document.getElementById('audio-player');
+
+    // Validate URL before setting
+    try {
+        new URL(previewUrl);
+        audioPlayer.src = previewUrl;
+        audioPlayer.load();
+        audioPlayer.play()
+            .then(() => {
+                document.querySelectorAll('.track-item').forEach(item => {
+                    item.classList.remove('playing');
+                });
+                element.classList.add('playing');
+            })
+            .catch(err => console.error('Playback error:', err));
+    } catch (e) {
+        console.error('Invalid preview URL:', previewUrl);
+    }
 }
