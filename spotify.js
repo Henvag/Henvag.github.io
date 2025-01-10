@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Display tracks in the music box
 function displayTracks(tracks) {
+    tracksList = tracks; // Store tracks for controls
     const container = document.getElementById('top-tracks');
     if (!container) {
         console.error('No #top-tracks container found');
@@ -39,7 +40,12 @@ function displayTracks(tracks) {
 
     container.innerHTML = tracks
         .map((track, index) => displayTrack(track, index))
-        .join('');
+        .join('') + `
+        <div class="music-controls">
+            <button class="control-btn" onclick="playPrevious()">⏮️</button>
+            <button class="control-btn" onclick="togglePlayPause()" id="playPauseBtn">⏸️</button>
+            <button class="control-btn" onclick="playNext()">⏭️</button>
+        </div>`;
 }
 
 // Redirect to Spotify OAuth
@@ -134,6 +140,7 @@ function displayTrack(track, index) {
 
 
 async function playTrack(previewUrl, uri, element) {
+    currentTrackIndex = Array.from(document.querySelectorAll('.track-item')).indexOf(element);
     console.log('Attempting to play:', { previewUrl, uri });
     const audioPlayer = document.getElementById('audio-player');
 
@@ -223,4 +230,37 @@ function updatePlayingState(element) {
         item.classList.remove('playing');
     });
     element.classList.add('playing');
+}
+
+
+
+function togglePlayPause() {
+    const audioPlayer = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseBtn.textContent = '⏸️';
+    } else {
+        audioPlayer.pause();
+        playPauseBtn.textContent = '▶️';
+    }
+}
+
+function playNext() {
+    if (currentTrackIndex < tracksList.length - 1) {
+        currentTrackIndex++;
+        const nextTrack = tracksList[currentTrackIndex];
+        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+        playTrack(nextTrack.preview_url || '', nextTrack.uri, trackElement);
+    }
+}
+
+function playPrevious() {
+    if (currentTrackIndex > 0) {
+        currentTrackIndex--;
+        const prevTrack = tracksList[currentTrackIndex];
+        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+        playTrack(prevTrack.preview_url || '', prevTrack.uri, trackElement);
+    }
 }
