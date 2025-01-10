@@ -1,7 +1,7 @@
 console.log("spotify.js is loading");
 
-let spotifyAccessToken = null; // Add token storage
-
+// Remove duplicate declarations at bottom, keep only these at top:
+let spotifyAccessToken = null;
 let tracksList = [];
 let currentTrackIndex = 0;
 let isPlaying = false;
@@ -248,47 +248,42 @@ function updatePlayingState(element) {
 
 
 
-let isPlaying = false;
-let currentAudioPlayer = null;
-
+// Update togglePlayPause function
 function togglePlayPause() {
     const audioPlayer = document.getElementById('audio-player');
     const playPauseBtn = document.getElementById('playPauseBtn');
 
-    if (!audioPlayer.src || audioPlayer.src === '') {
+    if (audioPlayer && audioPlayer.src) {
+        if (!audioPlayer.paused) {
+            audioPlayer.pause();
+            playPauseBtn.textContent = '▶️';
+            isPlaying = false;
+        } else {
+            audioPlayer.play();
+            playPauseBtn.textContent = '⏸️';
+            isPlaying = true;
+        }
+    } else {
         // No track loaded, start playing current track
         const currentTrack = tracksList[currentTrackIndex];
         if (currentTrack) {
             playTrack(currentTrack.preview_url || '', currentTrack.uri,
                      document.querySelectorAll('.track-item')[currentTrackIndex]);
         }
-    } else {
-        if (audioPlayer.paused) {
-            audioPlayer.play();
-            playPauseBtn.textContent = '⏸️';
-            isPlaying = true;
-        } else {
-            audioPlayer.pause();
-            playPauseBtn.textContent = '▶️';
-            isPlaying = false;
-        }
     }
 }
 
 function playNext() {
-    if (currentTrackIndex < tracksList.length - 1) {
-        currentTrackIndex++;
-        const nextTrack = tracksList[currentTrackIndex];
-        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
-        playTrack(nextTrack.preview_url || '', nextTrack.uri, trackElement);
-    }
+    currentTrackIndex = (currentTrackIndex + 1) % tracksList.length;
+    const nextTrack = tracksList[currentTrackIndex];
+    const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+    playTrack(nextTrack.preview_url || '', nextTrack.uri, trackElement);
 }
 
+// Update playPrevious function with circular navigation
 function playPrevious() {
-    if (currentTrackIndex > 0) {
-        currentTrackIndex--;
-        const prevTrack = tracksList[currentTrackIndex];
-        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
-        playTrack(prevTrack.preview_url || '', prevTrack.uri, trackElement);
-    }
+    currentTrackIndex = (currentTrackIndex - 1 + tracksList.length) % tracksList.length;
+    const prevTrack = tracksList[currentTrackIndex];
+    const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+    playTrack(prevTrack.preview_url || '', prevTrack.uri, trackElement);
 }
