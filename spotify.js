@@ -2,10 +2,6 @@ console.log("spotify.js is loading");
 
 let spotifyAccessToken = null; // Add token storage
 
-let tracksList = [];
-let currentTrackIndex = 0;
-
-
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Spotify login functionality
     console.log("DOMContentLoaded triggered");
@@ -145,8 +141,8 @@ function displayTrack(track, index) {
 
 async function playTrack(previewUrl, uri, element) {
     currentTrackIndex = Array.from(document.querySelectorAll('.track-item')).indexOf(element);
+    console.log('Attempting to play:', { previewUrl, uri });
     const audioPlayer = document.getElementById('audio-player');
-    currentAudioPlayer = audioPlayer;
 
     if (previewUrl) {
         try {
@@ -178,16 +174,7 @@ async function playTrack(previewUrl, uri, element) {
         console.log('No preview URL available, trying full track');
         await playFullTrack(uri, element);
     }
-
-    // Update play button state after successful playback
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    if (playPauseBtn) {
-        playPauseBtn.textContent = '⏸️';
-        isPlaying = true;
-    }
 }
-
-
 
 
 async function playFullTrack(uri, element) {
@@ -254,13 +241,13 @@ function togglePlayPause() {
     const audioPlayer = document.getElementById('audio-player');
     const playPauseBtn = document.getElementById('playPauseBtn');
 
-    if (!audioPlayer.src || audioPlayer.src === '') {
-        // No track loaded, start playing current track
+    if (!currentAudioPlayer) {
+        // If no track is playing, start playing current track
         const currentTrack = tracksList[currentTrackIndex];
-        if (currentTrack) {
-            playTrack(currentTrack.preview_url || '', currentTrack.uri,
-                     document.querySelectorAll('.track-item')[currentTrackIndex]);
-        }
+        playTrack(currentTrack.preview_url || '', currentTrack.uri,
+                 document.querySelectorAll('.track-item')[currentTrackIndex]);
+        playPauseBtn.textContent = '⏸️';
+        isPlaying = true;
     } else {
         if (audioPlayer.paused) {
             audioPlayer.play();
