@@ -248,42 +248,46 @@ function updatePlayingState(element) {
 
 
 
-// Update togglePlayPause function
+
+
 function togglePlayPause() {
     const audioPlayer = document.getElementById('audio-player');
     const playPauseBtn = document.getElementById('playPauseBtn');
 
-    if (audioPlayer && audioPlayer.src) {
-        if (!audioPlayer.paused) {
-            audioPlayer.pause();
-            playPauseBtn.textContent = '▶️';
-            isPlaying = false;
-        } else {
-            audioPlayer.play();
-            playPauseBtn.textContent = '⏸️';
-            isPlaying = true;
-        }
-    } else {
+    if (!audioPlayer.src || audioPlayer.src === '') {
         // No track loaded, start playing current track
         const currentTrack = tracksList[currentTrackIndex];
         if (currentTrack) {
             playTrack(currentTrack.preview_url || '', currentTrack.uri,
                      document.querySelectorAll('.track-item')[currentTrackIndex]);
         }
+    } else {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            playPauseBtn.textContent = '⏸️';
+            isPlaying = true;
+        } else {
+            audioPlayer.pause();
+            playPauseBtn.textContent = '▶️';
+            isPlaying = false;
+        }
     }
 }
 
 function playNext() {
-    currentTrackIndex = (currentTrackIndex + 1) % tracksList.length;
-    const nextTrack = tracksList[currentTrackIndex];
-    const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
-    playTrack(nextTrack.preview_url || '', nextTrack.uri, trackElement);
+    if (currentTrackIndex < tracksList.length - 1) {
+        currentTrackIndex++;
+        const nextTrack = tracksList[currentTrackIndex];
+        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+        playTrack(nextTrack.preview_url || '', nextTrack.uri, trackElement);
+    }
 }
 
-// Update playPrevious function with circular navigation
 function playPrevious() {
-    currentTrackIndex = (currentTrackIndex - 1 + tracksList.length) % tracksList.length;
-    const prevTrack = tracksList[currentTrackIndex];
-    const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
-    playTrack(prevTrack.preview_url || '', prevTrack.uri, trackElement);
+    if (currentTrackIndex > 0) {
+        currentTrackIndex--;
+        const prevTrack = tracksList[currentTrackIndex];
+        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+        playTrack(prevTrack.preview_url || '', prevTrack.uri, trackElement);
+    }
 }
