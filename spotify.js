@@ -1,5 +1,7 @@
 console.log("spotify.js is loading");
 
+let spotifyAccessToken = null; // Add token storage
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Spotify login functionality
     console.log("DOMContentLoaded triggered");
@@ -44,7 +46,8 @@ function displayTracks(tracks) {
 function redirectToSpotify() {
     const clientId = 'b717312e3a904a39943442f7f6f11b4b';
     const redirectUri = 'https://henvag.github.io';
-    const scopes = 'user-top-read user-read-playback-state streaming'; // Added scopes
+    // Add streaming scope
+    const scopes = 'user-top-read user-read-playback-state streaming user-modify-playback-state';
 
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}&show_dialog=true`;
     console.log("Redirecting to Spotify:", authUrl);
@@ -54,8 +57,8 @@ function redirectToSpotify() {
 // Handle OAuth callback
 async function handleSpotifyCallback(code) {
     try {
-        const accessToken = await getAccessToken(code);
-        await getUserTopTracks(accessToken);
+        spotifyAccessToken = await getAccessToken(code); // Store token
+        await getUserTopTracks(spotifyAccessToken);
         displayLoggedInState();
         document.querySelector('.music-box').classList.add('expanded');
         document.querySelector('.music-text').style.display = 'none';
@@ -98,7 +101,8 @@ async function getAccessToken(code) {
 
 // Get user's top tracks from Spotify
 async function getUserTopTracks(accessToken) {
-    const response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term', {
+    // Add market parameter to get previews
+    const response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&market=US', {
         headers: { 'Authorization': `Bearer ${accessToken}` }
     });
 
@@ -108,55 +112,68 @@ async function getUserTopTracks(accessToken) {
     }
 
     const data = await response.json();
-    // Debug preview URLs
-    data.items.forEach((track, i) => {
-        console.log(`Track ${i + 1}: ${track.name}`);
-        console.log(`Preview URL: ${track.preview_url}`);
-    });
     displayTracks(data.items.slice(0, 5));
 }
 
 // Display individual track with image and info
 function displayTrack(track, index) {
-    // Ensure preview URL is not null before creating element
-    if (!track.preview_url) {
-        console.log(`No preview URL for track: ${track.name}`);
-    }
-
     return `
-        <div class="track-item" onclick="playPreview('${track.preview_url || ''}', this)">
+        <div class="track-item" onclick="playTrack('${track.preview_url || ''}', '${track.uri}', this)">
             <img src="${track.album.images[2].url}" alt="${track.name}" class="track-image">
             <div class="track-info">
                 <p class="track-title">${track.name}</p>
                 <p class="track-artist">${track.artists[0].name}</p>
-                ${!track.preview_url ? '<span class="no-preview-text">No preview available</span>' : ''}
             </div>
         </div>
     `;
 }
 
-function playPreview(previewUrl, element) {
-    if (!previewUrl) {
-        console.log('Preview URL is missing');
+
+
+async function playTrack(previewUrl, uri, element) {
+    const audioPlayer = document.getElementById('audio-player');
+
+    if (previewUrl) {
+        try {
+            audioPlayer.src = previewUrl;
+            await audioPlayer.play();
+            updatePlayingState(element);
+        } catch (error) {
+            console.log('Preview playback failed, trying full track');
+            await playFullTrack(uri, element);
+        }
+    } else {
+        await playFullTrack(uri, element);
+    }
+}
+
+
+async function playFullTrack(uri, element) {
+    if (!spotifyAccessToken) {
+        console.error('No access token available');
         return;
     }
 
-    const audioPlayer = document.getElementById('audio-player');
-
-    // Validate URL before setting
     try {
-        new URL(previewUrl);
-        audioPlayer.src = previewUrl;
-        audioPlayer.load();
-        audioPlayer.play()
-            .then(() => {
-                document.querySelectorAll('.track-item').forEach(item => {
-                    item.classList.remove('playing');
-                });
-                element.classList.add('playing');
+        await fetch(`https://api.spotify.com/v1/me/player/play`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${spotifyAccessToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                uris: [uri]
             })
-            .catch(err => console.error('Playback error:', err));
-    } catch (e) {
-        console.error('Invalid preview URL:', previewUrl);
+        });
+        updatePlayingState(element);
+    } catch (error) {
+        console.error('Playback failed:', error);
     }
+}
+
+function updatePlayingState(element) {
+    document.querySelectorAll('.track-item').forEach(item => {
+        item.classList.remove('playing');
+    });
+    element.classList.add('playing');
 }
