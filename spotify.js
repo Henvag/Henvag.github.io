@@ -1,6 +1,7 @@
 console.log("spotify.js is loading");
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Spotify login functionality
     console.log("DOMContentLoaded triggered");
     const loginButton = document.getElementById('login');
 
@@ -26,9 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Display tracks in the music box
+function displayTracks(tracks) {
+    const container = document.getElementById('top-tracks');
+    if (!container) {
+        console.error('No #top-tracks container found');
+        return;
+    }
+
+    container.innerHTML = tracks
+        .map((track, index) => displayTrack(track, index))
+        .join('');
+}
+
+// Redirect to Spotify OAuth
 function redirectToSpotify() {
     const clientId = 'b717312e3a904a39943442f7f6f11b4b';
-    const redirectUri = 'https://henvag.github.io'; // Must match your Spotify App Settings
+    const redirectUri = 'https://henvag.github.io';
     const scopes = 'user-top-read';
 
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}&show_dialog=true`;
@@ -36,18 +51,20 @@ function redirectToSpotify() {
     window.location.href = authUrl;
 }
 
+// Handle OAuth callback
 async function handleSpotifyCallback(code) {
     try {
         const accessToken = await getAccessToken(code);
         await getUserTopTracks(accessToken);
         displayLoggedInState();
         document.querySelector('.music-box').classList.add('expanded');
-        document.querySelector('.music-text').style.display = 'none'; // Hide welcome text
+        document.querySelector('.music-text').style.display = 'none';
     } catch (error) {
         console.error('Error in Spotify callback:', error);
     }
 }
 
+// Update UI for logged in state
 function displayLoggedInState() {
     const loginButton = document.getElementById('login');
     if (loginButton) {
@@ -55,6 +72,7 @@ function displayLoggedInState() {
     }
 }
 
+// Get Spotify access token
 async function getAccessToken(code) {
     const clientId = 'b717312e3a904a39943442f7f6f11b4b';
     const clientSecret = 'fb9b3c5b93bb49e3a89a637f17d471ce';
@@ -78,6 +96,7 @@ async function getAccessToken(code) {
     return data.access_token;
 }
 
+// Get user's top tracks from Spotify
 async function getUserTopTracks(accessToken) {
     const response = await fetch('https://api.spotify.com/v1/me/top/tracks', {
         headers: { 'Authorization': `Bearer ${accessToken}` }
@@ -92,6 +111,7 @@ async function getUserTopTracks(accessToken) {
     displayTracks(data.items.slice(0, 5));
 }
 
+// Display individual track with image and info
 function displayTrack(track, index) {
     return `
         <div class="track-item">
