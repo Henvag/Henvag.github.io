@@ -155,19 +155,44 @@ async function playFullTrack(uri, element) {
     }
 
     try {
-        await fetch(`https://api.spotify.com/v1/me/player/play`, {
+        // First check for active devices
+        const devices = await fetch('https://api.spotify.com/v1/me/player/devices', {
+            headers: {
+                'Authorization': `Bearer ${spotifyAccessToken}`
+            }
+        });
+        const deviceData = await devices.json();
+        console.log('Available devices:', deviceData);
+
+        if (!deviceData.devices.length) {
+            console.error('No active Spotify devices found');
+            alert('Please open Spotify on any device to enable playback');
+            return;
+        }
+
+        // Try to play on active device
+        const response = await fetch('https://api.spotify.com/v1/me/player/play', {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${spotifyAccessToken}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                uris: [uri]
+                uris: [uri],
+                device_id: deviceData.devices[0].id
             })
         });
+
+        if (!response.ok) {
+            const error = await response.json();
+            console.error('Playback error:', error);
+            throw new Error(error.error.message);
+        }
+
         updatePlayingState(element);
     } catch (error) {
-        console.error('Playback failed:', error);
+        console.error('Full track playback failed:', error);
+        alert('Please ensure Spotify is open and you have an active Premium subscription');
     }
 }
 
