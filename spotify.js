@@ -108,14 +108,15 @@ async function getUserTopTracks(accessToken) {
     }
 
     const data = await response.json();
+    console.log('Track data:', data.items); // Debug track data
     displayTracks(data.items.slice(0, 5));
 }
 
 // Display individual track with image and info
 function displayTrack(track, index) {
-    console.log('Preview URL:', track.preview_url); // Debug preview URL
+    console.log(`Track ${index} preview URL:`, track.preview_url);
     return `
-        <div class="track-item" data-preview-url="${track.preview_url}" onclick="playTrack(this)">
+        <div class="track-item" onclick="playPreview('${track.preview_url}', this)">
             <img src="${track.album.images[2].url}" alt="${track.name}" class="track-image">
             <div class="track-info">
                 <p class="track-title">${track.name}</p>
@@ -125,18 +126,27 @@ function displayTrack(track, index) {
     `;
 }
 
-function playTrack(element) {
-    const previewUrl = element.dataset.previewUrl;
+function playPreview(previewUrl, element) {
+    console.log('Attempting to play:', previewUrl);
     const audioPlayer = document.getElementById('audio-player');
 
-    if (previewUrl) {
-        audioPlayer.src = previewUrl;
-        audioPlayer.play();
-
-        // Highlight playing track
-        document.querySelectorAll('.track-item').forEach(item => {
-            item.classList.remove('playing');
-        });
-        element.classList.add('playing');
+    if (!previewUrl) {
+        console.log('No preview URL available for this track');
+        return;
     }
+
+    // Update audio source and play
+    audioPlayer.src = previewUrl;
+    audioPlayer.play()
+        .then(() => {
+            console.log('Playback started');
+            // Add playing class to clicked element
+            document.querySelectorAll('.track-item').forEach(item => {
+                item.classList.remove('playing');
+            });
+            element.classList.add('playing');
+        })
+        .catch(error => {
+            console.error('Playback failed:', error);
+        });
 }
