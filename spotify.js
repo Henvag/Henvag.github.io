@@ -1,11 +1,10 @@
 console.log("spotify.js is loading");
 
-// Remove duplicate declarations at bottom, keep only these at top:
-let spotifyAccessToken = null;
+let spotifyAccessToken = null; // Add token storage
+
 let tracksList = [];
 let currentTrackIndex = 0;
-let isPlaying = false;
-let currentAudioPlayer = null;
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Spotify login functionality
@@ -248,7 +247,8 @@ function updatePlayingState(element) {
 
 
 
-
+let isPlaying = false;
+let currentAudioPlayer = null;
 
 function togglePlayPause() {
     const audioPlayer = document.getElementById('audio-player');
