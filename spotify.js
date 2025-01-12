@@ -262,19 +262,15 @@ function togglePlayPause() {
 }
 
 function playNext() {
-    if (currentTrackIndex < tracksList.length - 1) {
-        currentTrackIndex++;
-        const nextTrack = tracksList[currentTrackIndex];
-        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
-        playTrack(nextTrack.preview_url || '', nextTrack.uri, trackElement);
-    }
+    currentTrackIndex = (currentTrackIndex + 1) % tracksList.length;
+    const nextTrack = tracksList[currentTrackIndex];
+    const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+    playTrack(nextTrack.preview_url || '', nextTrack.uri, trackElement);
 }
 
 function playPrevious() {
-    if (currentTrackIndex > 0) {
-        currentTrackIndex--;
-        const prevTrack = tracksList[currentTrackIndex];
-        const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
-        playTrack(prevTrack.preview_url || '', prevTrack.uri, trackElement);
-    }
+    currentTrackIndex = (currentTrackIndex - 1 + tracksList.length) % tracksList.length;
+    const prevTrack = tracksList[currentTrackIndex];
+    const trackElement = document.querySelectorAll('.track-item')[currentTrackIndex];
+    playTrack(prevTrack.preview_url || '', prevTrack.uri, trackElement);
 }
