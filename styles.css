@@ -1,13 +1,16 @@
-
-
-
-
-
-
 .github-lottie {
-    width: 128px;  /* Increased size */
+    width: 128px;
     height: 128px;
-    margin-left: -10px; /* Push to right */
+    margin-left: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.github-lottie a {
+    width: 128px;
+    height: 128px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,9 +20,8 @@
     width: 100%;
     height: 100%;
     cursor: pointer;
+    pointer-events: auto; /* Allow hover events */
 }
-
-
 
 .music-controls {
     display: flex;
@@ -344,11 +346,24 @@ body {
 
 }
 
+/* Update existing footer styles */
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #000000 !important;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000 !important;
+}
+
+.text-muted {
+    text-align: left;
+    margin-left: -120px;
+    font-family: 'Circular', sans-serif;
+    color: #ffffff !important;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: flex-start;
 }
 
 .spotify-section {
@@ -527,14 +542,16 @@ body {
   height: 300px;
   border: 1px solid #6e40f3;
   position: fixed;
-  right: 60px;
-  top: 120px;
+  right: -80px;
+  top: -25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #000000;
   margin: 200px;
+
+
 }
 
 @media (max-width: 1920px) {
