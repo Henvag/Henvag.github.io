@@ -1,3 +1,41 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out; /* Give a clue you can click outside to close */
+}
+
+.modal-img {
+  max-width: 50vw; /* Adjust as needed */
+  max-height: 50vh; /* Adjust as needed */
+  object-fit: contain;
+  cursor: auto; /* Normal cursor over the image */
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.project-image {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.project-image:hover {
+    transform: scale(1.05);
+}
 .github-lottie {
     width: 128px;
     height: 128px;
@@ -6,6 +44,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    left: 660px;
 }
 
 .github-lottie a {
@@ -330,16 +369,15 @@ body {
 }
 
 .henvagdev-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* other styles */
+    height: 50px;
+    margin-left: 10px;  /* Changed from -20px to 10px */
+    transform: none;
+    position: relative;
 }
 
 .arrow-icon {
   display: block;
-  margin-left: 27px;
+  margin-left: 1303px;
   margin-top: 20px;
   padding-top: 10px;
   height: 50px;
@@ -404,11 +442,10 @@ body {
 }
 
 .left-content {
-  display: flex;
-  justify-content: flex-start;
-  flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
-
 .right-content {
   display: flex;
   justify-content: center;
@@ -416,7 +453,7 @@ body {
 }
 
 .projects-button {
-  margin-left: 100px;
+  margin-left: 200px;  /* Adjusted spacing */
   font-family: 'Circular', sans-serif;
   color: black;
   background-color: #5c40f3;
@@ -425,7 +462,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 9px;
+  margin-top: 0px;
 }
 
 .music-text {
@@ -457,15 +494,24 @@ body {
 }
 
 .project {
-  width: 300px;
-  height: 300px;
-  border: 1px solid #000;
-  margin: 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #6e40f3;
+    width: 300px;
+    height: 300px;
+    margin: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6e40f3, #5c40f3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none; /* Removes solid border */
+}
+
+.project:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 .project img {
@@ -579,44 +625,55 @@ body {
 }
 
 .dropbtn {
-  background-color: #6e40f3;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+    background-color: #6e40f3;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #000000;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s;
-  border-radius: 15px;
-  left: 50%;
-  transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: #000000;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    padding-top: 10px;
+    transition: visibility 0.3s, opacity 0.3s;
 }
 
+
+
+/* Create invisible bridge between button and menu */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    bottom: -10px;
+    left: 0;
+}
 .dropdown:hover .dropdown-content {
-  display: block;
-  opacity: 1;
-  background-color: #000000;
+    visibility: visible;
+    opacity: 1;
 }
 
 .dropdown-content a {
-  color: #ffffff;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 .dropdown-content a:hover {
-  background-color: #1f2334;
-  border-radius: 15px;
+    background-color: #1f2334;
+    border-radius: 15px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -626,13 +683,12 @@ body {
 .dropdown:hover .dropbtn {
   background-color: #5c40f3;
   border-radius: 15px;
-}
 
+}
 .dropdown {
-  position: relative;
-  right: 22px;
+    position: relative;
+    margin-left: 20px;
 }
-
 
 
 
@@ -657,16 +713,18 @@ body {
     left: 0;
     display: flex;
     align-items: center;
+
+      gap: 20px; /* Add spacing between dropdown and projects button */
   }
 
   .henvagdev-icon {
     transform: scale(1.2);
-    margin: -25px auto;
+    margin-left: 15px;  /* Changed from -20px to 10px */
   }
 
   .dropdown {
-    position: absolute;
-    right: 0;
+    position: relative;
+    left: 20px;
   }
 
  // ...existing scaling code for other elements...
@@ -690,6 +748,7 @@ body {
 
   .dropbtn {
     padding: 19px;
+
   }
 
 
@@ -745,6 +804,8 @@ body {
   transform: translateX(-200px); /* This will shift the switch button 20px to the left */
   top: 6px; /* Adjust as needed */
 
+    left: 80px;
+
 }
 
 .language-label {
@@ -789,6 +850,8 @@ body {
   bottom: 0;
   background-color: #ccc;
   transition: .4s;
+
+
 }
 
 .slider:before {

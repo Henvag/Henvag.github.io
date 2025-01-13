@@ -22,52 +22,53 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
       <div class="navbar-content">
        <div class="left-content">
-  <a href="https://github.com/Henvag">
-    <div class="github-lottie">
-  <lottie-player
-    id="github-animation"
-    src="https://cdn.lottielab.com/l/4r87ybPrU328YQ.json"
-    background="transparent"
-    speed="0.75"
-    style="width: 128px; height: 128px;"
-    autoplay="true"
-    loop="true"
-  ></lottie-player>
-</div>
-  </a>
-          <a class="btn btn-primary projects-button" href="#" role="button"
-             data-en-projects="Projects"
-             data-no-projects="Prosjekter"
-             data-en-home="Home"
-             data-no-home="Hjem">Projects</a>
-        </div>
-        <a href="https://henvag.github.io/">
-          <img src="henvagdevborder.jpg" alt="Logo" style="height:50px;" class="henvagdev-icon">
-        </a>
-        <div class="right-content"></div>
+    <div class="dropdown">
+      <button class="dropbtn">
+        <img src="menu.png" alt="Menu" class="menu-image">
+      </button>
+      <div class="dropdown-content">
+        <a href="https://github.com/Henvag">GitHub</a>
+        <a href="#" id="dropdown-projects"
+           data-en-projects="Projects"
+           data-no-projects="Prosjekter"
+           data-en-home="Home"
+           data-no-home="Hjem">Projects</a>
       </div>
+    </div>
+    <a href="https://henvag.github.io/">
+      <img src="henvagdevborder.jpg" alt="Logo" style="height:50px;" class="henvagdev-icon">
+    </a>
+    <a class="btn btn-primary projects-button" href="#" role="button"
+       data-en-projects="Projects"
+       data-no-projects="Prosjekter"
+       data-en-home="Home"
+       data-no-home="Hjem">Projects</a>
+  </div>
 
-      <label class="switch">
-        <input type="checkbox" id="language-switcher">
-        <span class="slider round"></span>
-        <span id="language-label" class="language-label">NO</span>
-        <span id="language-label-en" class="language-label-en">EN</span>
-      </label>
-
-      <div class="dropdown">
-        <button class="dropbtn">
-          <img src="menu.png" alt="Menu" class="menu-image">
-        </button>
-        <div class="dropdown-content">
-          <a href="https://github.com/Henvag">GitHub</a>
-          <a href="#" id="dropdown-projects"
-             data-en-projects="Projects"
-             data-no-projects="Prosjekter"
-             data-en-home="Home"
-             data-no-home="Hjem">Projects</a>
+        <div class="right-content">
+      <a href="https://github.com/Henvag">
+        <div class="github-lottie">
+          <lottie-player
+            id="github-animation"
+            src="https://cdn.lottielab.com/l/4r87ybPrU328YQ.json"
+            background="transparent"
+            speed="0.75"
+            style="width: 128px; height: 128px;"
+            autoplay="true"
+            loop="true"
+          ></lottie-player>
         </div>
-      </div>
-    </nav>
+      </a>
+    </div>
+  </div>
+
+  <label class="switch">
+    <input type="checkbox" id="language-switcher">
+    <span class="slider round"></span>
+    <span id="language-label" class="language-label">NO</span>
+    <span id="language-label-en" class="language-label-en">EN</span>
+  </label>
+</nav>
 
    <div class="music-box">
     <div class="spotify-section">
@@ -113,7 +114,7 @@
 
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
-        <span class="text-muted">Made by Henvag 2025</span>
+        <span class="text-muted">© Made by Henvag 2025</span>
       </div>
     </footer>
 
@@ -123,6 +124,33 @@
     <script src="spotify.js"></script>
     <script src="drag.js"></script> <!-- Added drag.js -->
     <script src="language.js"></script>
+    <!-- Modal -->
+<div id="imageModal" class="modal">
+  <span class="close-btn">&times;</span>
+  <img id="expandedImage" class="modal-img" />
+</div>
+
+<!-- Put this script at the bottom of the page -->
+<!-- Modal -->
+  <div id="imageModal" class="modal">
+    <img id="expandedImage" class="modal-img">
+  </div>
+
+  <script>
+    function expandImage(img) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('expandedImage');
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+    }
+
+    // Close if user clicks outside the image
+    window.onclick = (e) => {
+      if (e.target === document.getElementById('imageModal')) {
+        document.getElementById('imageModal').style.display = 'none';
+      }
+    };
+  </script>
    <!-- <script src="animation.js"></script>-->
   </body>
 </html>

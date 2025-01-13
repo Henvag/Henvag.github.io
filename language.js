@@ -9,9 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageSwitch = document.getElementById('language-switcher');
     const originalContent = document.querySelector('.main-content').innerHTML;
 
+    const dropdownProjects = document.getElementById('dropdown-projects');
+    const mainContent = document.querySelector('.main-content');
+    let isProjectsPage = false;
+
     // Set initial state
     languageSwitch.checked = (currentLanguage === 'norsk');
     updateContent();
+
 
     function updateContent() {
         const button = document.querySelector('.projects-button');
@@ -45,6 +50,47 @@ document.addEventListener('DOMContentLoaded', () => {
             languageSwitch.checked = false;
         }
     }
+
+
+    document.getElementById('dropdown-projects').addEventListener('click', function(event) {
+        event.preventDefault();
+        handleProjectsClick(originalContent);
+    });
+function handleProjectsClick(originalContent) {
+        const isProjectsPage = document.querySelector('.project-info');
+        const mainContent = document.querySelector('.main-content');
+
+        if (mainContent.classList.contains('fade-out') || mainContent.classList.contains('fade-in')) {
+            return;
+        }
+
+        mainContent.classList.add('fade-out');
+
+        setTimeout(() => {
+            if (isProjectsPage) {
+                mainContent.innerHTML = originalContent;
+                updateContent();
+            } else {
+                fetch('projects.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        mainContent.innerHTML = data;
+                        updateContent();
+                    });
+            }
+
+            mainContent.classList.remove('fade-out');
+
+            requestAnimationFrame(() => {
+                mainContent.classList.add('fade-in');
+                setTimeout(() => {
+                    mainContent.classList.remove('fade-in');
+                }, 500);
+            });
+        }, 500);
+    }
+
+
 
     languageSwitch.addEventListener('change', function() {
         currentLanguage = this.checked ? 'norsk' : 'english';

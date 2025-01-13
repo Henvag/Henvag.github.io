@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Projects</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Projects</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="project">
-        <div class="project-info">
-            <h2 class="project-title" data-en="Developer Portfolio Website" data-no="Utviklerportefølje Nettsted">Developer Portfolio Website</h2>
-            <img src="website.png" alt="Project image">
-            <p class="project-description"
-               data-en="This website is of course one of the projects!<br> I used the Spotify API with Flask to handle Oauth, and the Bootstrap framework for styling.<br><br><a href='https://github.com/Henvag/Henvag.github.io'> GitHub</a>"
-               data-no="Dette nettstedet er selvfølgelig et av prosjektene!<br> Jeg brukte Spotify API med Flask for å håndtere Oauth, og Bootstrap-rammeverket for styling.<br><br><a href='https://github.com/Henvag/Henvag.github.io'> GitHub</a>">
-                This website is of course one of the projects!<br>
-                I used the Spotify API with Flask to handle Oauth, and the Bootstrap framework for styling.<br><br>
-                <a href="https://github.com/Henvag/Henvag.github.io"> GitHub</a>
-            </p>
-        </div>
+  <div class="project">
+    <div class="project-info">
+      <!-- Keep the GitHub link and data-en/data-no attributes -->
+      <h2 class="project-title"
+          data-en="Developer Portfolio Website"
+          data-no="Utviklerportefølje Nettsted">
+        Developer Portfolio Website
+      </h2>
+
+      <img src="website.png" alt="Project image" class="project-image" onclick="expandImage(this)">
+
+      <p class="project-description"
+         data-en="This website is of course one of the projects!
+I used the Spotify API with Flask to handle Oauth, and the Bootstrap framework for styling.
+                  <br><br>
+                  <a href='https://github.com/Henvag/Henvag.github.io'>GitHub</a>"
+         data-no="Dette nettstedet er selvfølgelig et av prosjektene! Jeg brukte Spotify-APIet med Flask og Bootstrap.
+                  <br><br>
+                  <a href='https://github.com/Henvag/Henvag.github.io'>GitHub</a>">
+        This website is of course one of the projects! I used the Spotify API with Flask and Bootstrap.
+        <br><br>
+        <a href="https://github.com/Henvag/Henvag.github.io">GitHub</a>
+      </p>
     </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <img id="expandedImage" class="modal-img">
+  </div>
+
+  <script>
+    function expandImage(img) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('expandedImage');
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+    }
+
+    // Close if user clicks outside the image
+    window.onclick = (e) => {
+      if (e.target === document.getElementById('imageModal')) {
+        document.getElementById('imageModal').style.display = 'none';
+      }
+    };
+  </script>
 </body>
 </html>
