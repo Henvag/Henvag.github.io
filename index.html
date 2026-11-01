@@ -202,33 +202,92 @@ CREATE POLICY users_tenant_isolation ON users
 
     <!-- Other projects -->
     <section class="wrap projects" id="projects" aria-labelledby="projects-title">
-      <p class="section-label" data-i18n="p.label">Other projects</p>
-      <h2 id="projects-title" data-i18n="p.title">Smaller things I have built</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>PulseType</h3>
-          <p data-i18n="p.pulse">A typing speed site with a leaderboard. Sign in with Google or GitHub to keep your scores.</p>
-          <p class="tags">Node.js, Express, PostgreSQL, Passport</p>
-          <p class="links"><a href="https://pulsetype.onrender.com" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/PulseType" data-i18n="p.code">Code</a></p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="p.mush.h">Mushroom classifier</h3>
-          <p data-i18n="p.mush">Upload a photo and get edible or poisonous, with confidence, plus a searchable species guide. Built for a university course (INFO212).</p>
-          <p class="tags">React, Flask, Roboflow</p>
-          <p class="links"><a href="https://mushroomproject.app" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/MushroomProject" data-i18n="p.code">Code</a></p>
-        </article>
-        <article class="card">
-          <h3>WitchCraft</h3>
-          <p data-i18n="p.witch">An experiment that lets you play The Witcher 3 as a Minecraft character, with Minecraft movement, inventory and block building inside the Witcher world. A C++ host talks to a Minecraft mod over its network protocol.</p>
-          <p class="tags">C++, Java, Python</p>
-          <p class="links"><a href="https://www.youtube.com/watch?v=9HFluJPhxtA" data-i18n="p.video">Video</a><a href="https://github.com/Henvag/WitchCraft" data-i18n="p.code">Code</a></p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="p.ml.h">Machine learning visualiser</h3>
-          <p data-i18n="p.ml">A web app that trains regression and classification models on several datasets and plots how they fit, in English and Norwegian.</p>
-          <p class="tags">Python, Flask, scikit-learn, Babel</p>
-          <p class="links"><a href="https://github.com/Henvag/Machine_learning_WebApp" data-i18n="p.code">Code</a></p>
-        </article>
+      <div class="carousel" data-carousel>
+        <div class="carousel-head">
+          <div>
+            <p class="section-label" data-i18n="p.label">Other projects</p>
+            <h2 id="projects-title" data-i18n="p.title">Smaller things I have built</h2>
+          </div>
+          <div class="carousel-controls">
+            <span class="carousel-count" aria-live="polite"><span data-current>1</span> / <span data-total>4</span></span>
+            <button type="button" class="carousel-btn" data-prev aria-label="Previous project">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" class="carousel-btn" data-next aria-label="Next project">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="carousel-track" tabindex="0" aria-label="Projects, scroll sideways for more">
+          <li class="slide">
+            <article class="card">
+              <div class="card-media cover-type" aria-hidden="true">
+                <p class="cover-type-text"><span class="typed">the quick brown fox jum</span><span class="caret"></span><span class="untyped">ps over the lazy dog</span></p>
+                <p class="cover-type-stats"><span><b>84</b> wpm</span><span><b>98%</b> acc</span></p>
+              </div>
+              <div class="card-body">
+                <h3>PulseType</h3>
+                <p data-i18n="p.pulse">A typing speed site with a leaderboard. Sign in with Google or GitHub to keep your scores.</p>
+                <p class="tags">Node.js, Express, PostgreSQL, Passport</p>
+                <p class="links"><a href="https://pulsetype.onrender.com" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/PulseType" data-i18n="p.code">Code</a></p>
+              </div>
+            </article>
+          </li>
+          <li class="slide">
+            <article class="card">
+              <div class="card-media">
+                <img src="assets/img/proj-mushroom.webp" width="900" height="560" loading="lazy" alt="Chanterelle mushrooms on a forest floor, one of the species in the app's guide.">
+                <span class="cover-badge" data-i18n="p.mush.badge">Edible</span>
+              </div>
+              <div class="card-body">
+                <h3 data-i18n="p.mush.h">Mushroom classifier</h3>
+                <p data-i18n="p.mush">Upload a photo and get edible or poisonous, with confidence, plus a searchable species guide. Built for a university course (INFO212).</p>
+                <p class="tags">React, Flask, Roboflow</p>
+                <p class="links"><a href="https://mushroomproject.app" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/MushroomProject" data-i18n="p.code">Code</a></p>
+              </div>
+            </article>
+          </li>
+          <li class="slide">
+            <article class="card">
+              <div class="card-media">
+                <img src="assets/img/proj-witchcraft.webp" width="900" height="560" loading="lazy" alt="WitchCraft main menu: a Minecraft character stands where Geralt usually does in The Witcher 3.">
+              </div>
+              <div class="card-body">
+                <h3>WitchCraft</h3>
+                <p data-i18n="p.witch">An experiment that lets you play The Witcher 3 as a Minecraft character, with Minecraft movement, inventory and block building inside the Witcher world. A C++ host talks to a Minecraft mod over its network protocol.</p>
+                <p class="tags">C++, Java, Python</p>
+                <p class="links"><a href="https://www.youtube.com/watch?v=9HFluJPhxtA" data-i18n="p.video">Video</a><a href="https://github.com/Henvag/WitchCraft" data-i18n="p.code">Code</a></p>
+              </div>
+            </article>
+          </li>
+          <li class="slide">
+            <article class="card">
+              <div class="card-media cover-plot" aria-hidden="true">
+                <svg viewBox="0 0 360 224" preserveAspectRatio="xMidYMid meet">
+                  <g class="plot-grid"><line x1="40" y1="190" x2="330" y2="190"/><line x1="40" y1="30" x2="40" y2="190"/><line x1="40" y1="110" x2="330" y2="110"/><line x1="185" y1="30" x2="185" y2="190"/></g>
+                  <line class="plot-fit" x1="48" y1="178" x2="322" y2="46"/>
+                  <g class="plot-dots">
+                    <circle cx="58" cy="168" r="4.5"/><circle cx="74" cy="176" r="4.5"/><circle cx="86" cy="150" r="4.5"/><circle cx="102" cy="160" r="4.5"/><circle cx="116" cy="138" r="4.5"/><circle cx="130" cy="150" r="4.5"/><circle cx="146" cy="124" r="4.5"/><circle cx="160" cy="132" r="4.5"/><circle cx="174" cy="112" r="4.5"/><circle cx="190" cy="118" r="4.5"/><circle cx="204" cy="96" r="4.5"/><circle cx="220" cy="104" r="4.5"/><circle cx="234" cy="84" r="4.5"/><circle cx="250" cy="90" r="4.5"/><circle cx="264" cy="70" r="4.5"/><circle cx="280" cy="78" r="4.5"/><circle cx="296" cy="58" r="4.5"/><circle cx="312" cy="64" r="4.5"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="card-body">
+                <h3 data-i18n="p.ml.h">Machine learning visualiser</h3>
+                <p data-i18n="p.ml">A web app that trains regression and classification models on several datasets and plots how they fit, in English and Norwegian.</p>
+                <p class="tags">Python, Flask, scikit-learn, Babel</p>
+                <p class="links"><a href="https://github.com/Henvag/Machine_learning_WebApp" data-i18n="p.code">Code</a></p>
+              </div>
+            </article>
+          </li>
+        </ul>
+
+        <div class="carousel-dots" role="group" aria-label="Choose a project">
+          <button type="button" aria-label="PulseType" aria-current="true"></button>
+          <button type="button" aria-label="Mushroom classifier"></button>
+          <button type="button" aria-label="WitchCraft"></button>
+          <button type="button" aria-label="Machine learning visualiser"></button>
+        </div>
       </div>
     </section>
 
