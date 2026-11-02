@@ -9,78 +9,57 @@
     "nav.projects": "Prosjekter",
     "nav.about": "Om meg",
     "nav.contact": "Kontakt",
-    "intro.kicker": "Hei, jeg er",
-    "intro.lead": "Utvikler og student i informasjonsvitenskap ved Universitetet i Bergen. Jeg bygger webapplikasjoner fra start til slutt, fra regler i databasen til grensesnittet, og trives best med innlogging, data for mange kunder i samme system og de delene som må være riktige.",
-    "intro.page": "Denne siden er hovedsakelig for å vise hva jeg jobber med, og hva jeg har gjort tidligere :)",
+    "intro.title": "Hei, jeg er Henrik",
+    "intro.lead": "Henrik Rolland Vågseth, utvikler i Bergen. Jeg bygger webapper fra start til slutt, fra databasen til grensesnittet.",
+    "intro.page": "Her viser jeg hva jeg jobber med, og hva jeg har laget før :)",
     "intro.cta": "Se Tenant Access",
-    "intro.cta2": "Alle prosjekter",
+    "intro.cta2": "Andre prosjekter",
     "music.title": "Nyt litt musikk mens du blar!",
     "music.load": "Last inn Spotify-spilleren",
-    "music.note": "Laster inn en spilleliste fra Spotify. Ingenting lastes før du trykker.",
-    "case.label": "Utvalgt case",
-    "case.lead": "Felles innlogging og tilgangsstyring for små bedrifter som drifter egne verktøy, som Grafana, Outline og Gitea. Folk logger inn med Google eller Microsoft, administratorer bestemmer hvem som får åpne hvilken app, og hver innlogging og avvisning blir logget.",
-    "case.role": "Rolle",
-    "case.role.v": "Soloprosjekt, fra skjema til drift",
-    "case.stack": "Teknologi",
-    "case.hosting": "Kjører på",
+    "music.note": "Ingenting lastes før du trykker.",
+    "case.lead": "Felles innlogging for små bedrifter som drifter egne verktøy, som Grafana og Outline. En innlogging, og ett sted å se hvem som har tilgang.",
+    "case.f1": "Soloprosjekt",
     "case.demo": "Åpne live-demoen",
     "case.source": "Kildekode på GitHub",
-    "case.demo.note": "Demoen krever ingen konto. Du logges inn som eier av et eksempelfirma, kun med lesetilgang. Gratis hosting kan bruke rundt 30 sekunder på å våkne.",
-    "case.problem.h": "Problemet",
-    "case.problem.p": "Et firma på 5 til 50 personer som drifter egne verktøy, ender opp med en egen innlogging for hvert av dem, og ingen samlet oversikt over hvem som har tilgang, eller noe sted å stenge noen ute. De store identitetsproduktene løser dette, men de er priset og laget for mye større organisasjoner.",
-    "case.built.h": "Hva jeg bygde",
-    "case.built.1": "Innlogging med Google eller Microsoft, koblet til riktig firma via det verifiserte e-postdomenet",
-    "case.built.2": "En egen OpenID Connect-leverandør, slik at apper som Grafana logger inn gjennom den (code flow med PKCE, RS256-tokens, JWKS)",
-    "case.built.3": "Tilgangsregler per app, revisjonslogg med CSV-eksport og signerte webhooks",
-    "case.built.4": "Partnermodus, slik at et eksternt IT-firma kan administrere flere kundefirmaer",
-    "case.built.5": "Betaling med Stripe, grensesnitt på norsk og engelsk, og en offentlig demo med kun lesetilgang",
-    "case.decisions": "Valg det er verdt å snakke om",
-    "d1.h": "Isolasjon som databasen håndhever, ikke koden",
-    "d1.p1": "Den klassiske feilen i systemer med mange kunder er én spørring som glemmer <code>WHERE tenant_id = ?</code>. Jeg la regelen i Postgres i stedet: alle kundetabeller har row-level security, påtvunget selv for tabelleieren, og hver forespørsel setter kunden for sin transaksjon. Uten kunde satt blir lesing tom og skriving avvist.",
-    "d1.p2": "Så oppdaget jeg at produksjon hoppet stille over alt sammen. Neons standard eierrolle har <code>BYPASSRLS</code>, så alle reglene ble ignorert. Testene fanget det ikke fordi de kjørte som en vanlig rolle. Løsningen ble en begrenset rolle for appen, en egen for migreringer, og en sjekk ved oppstart som nekter å kjøre hvis appens rolle kan gå forbi reglene.",
-    "d1.cap": "Samme idé som animasjon på forsiden til Tenant Access.",
-    "d1.replay": "Spill av igjen",
-    "d2.h": "Stenger nOAuth-overtakelsen",
-    "d2.p": "Med Microsofts innlogging for flere organisasjoner kan hvem som helst opprette en katalog og gi en bruker en hvilken som helst e-postadresse. Å stole på den adressen ville latt en fremmed logge inn som kollegaen din. E-post fra jobbkontoer teller bare når tokenet sier at katalogen har verifisert domenet, og en eksisterende konto kobles aldri til en ny identitet bare på grunn av e-post.",
-    "d3.h": "En offentlig demo ingen kan ødelegge",
-    "d3.p": "Anonyme besøkende får en administratorplass i et eksempelfirma, så plassen må være ufarlig på serveren, ikke bare i grensesnittet. Én felles avhengighet avviser all skriving fra en demoøkt, demoappenes hemmeligheter ble kastet da dataene ble lagt inn, og besøkendes IP-adresser lagres aldri.",
-    "d4.h": "Webhooks som ikke kan rettes innover",
-    "d4.p": "Hendelser i revisjonsloggen legger leveransene sine i kø i samme transaksjon som hendelsen, og en bakgrunnsjobb signerer dem med Standard Webhooks-headere og prøver på nytt i omtrent sju timer. Private og lokale adresser avvises før hver sending, og omdirigeringer følges ikke, så en webhook kan ikke brukes til å undersøke serverens eget nettverk.",
-    "case.gallery": "Fra demofirmaet",
+    "case.demo.note": "Ingen konto trengs. Demoen er et eksempelfirma med kun lesetilgang, og gratisserveren kan bruke 30 sekunder på å våkne.",
+    "g.overview": "Oversikt",
     "g.people": "Personer og roller",
     "g.apps": "Apper og hvem som får åpne dem",
     "g.audit": "Revisjonslogg med grunner for avvisning",
-    "g.org": "Domener bevist med DNS, og webhooks",
-    "case.learned.h": "Hva jeg tok med meg",
-    "case.learned.p": "Test mot den samme databaserollen som produksjon bruker. En sikkerhetsegenskap som bare holder i CI, er ingen egenskap. Jeg lærte også å holde omfanget lite med vilje: to roller pluss en eier, én container, ett domene, én cookie.",
-    "case.next.h": "Hva jeg ville gjort videre",
-    "case.next.p": "Automatisk brukeropprettelse (SCIM) fra Google Workspace og Entra, en skjerm for å rotere signeringsnøklene, og betalt hosting uten kaldstart når de første firmaene tar det i bruk.",
-    "p.label": "Andre prosjekter",
-    "p.title": "Mindre ting jeg har laget",
-    "p.pulse": "En side for skrivehastighet med toppliste. Logg inn med Google eller GitHub for å ta vare på resultatene dine.",
+    "g.org": "Domener og webhooks",
+    "case.built.h": "Hva den gjør",
+    "case.built.1": "Innlogging med Google eller Microsoft, koblet til firmaet via verifisert e-postdomene",
+    "case.built.2": "En egen OpenID Connect-leverandør, så Grafana og Outline logger inn gjennom den",
+    "case.built.3": "Tilgangsregler per app, revisjonslogg, CSV-eksport og signerte webhooks",
+    "case.built.4": "Partnermodus for IT-firmaer som passer på flere bedrifter",
+    "case.learned.h": "Hva jeg lærte",
+    "case.learned.p": "Test med den samme databaserollen som produksjon. En sikkerhetsgaranti som bare holder i CI, er ingen garanti.",
+    "case.decisions": "De vanskelige delene",
+    "d1.h": "Isolasjon i databasen",
+    "d1.p": "Alle kundetabeller har påtvunget row-level security, så en spørring som glemmer kundefilteret får ingenting tilbake. I produksjon var det stille slått av, fordi Neons eierrolle går forbi RLS. Nå kjører appen som en begrenset rolle og nekter å starte hvis den kan gå forbi reglene.",
+    "d1.replay": "Spill av igjen",
+    "d2.h": "Stenger nOAuth",
+    "d2.p": "En jobb-e-post fra Microsoft teller bare når katalogen har verifisert domenet, og kontoer kobles aldri sammen bare på e-post.",
+    "d3.h": "En demo ingen kan ødelegge",
+    "d3.p": "En regel på serveren avviser all skriving fra en demoøkt. Apphemmelighetene ble kastet, og besøkendes IP-adresser lagres aldri.",
+    "d4.h": "Webhooks som holder seg ute",
+    "d4.p": "Signert og prøvd på nytt, og avvist for private eller lokale adresser, så de ikke kan undersøke serverens eget nettverk.",
+    "p.title": "Andre prosjekter",
+    "p.pulse": "Skrivetester med toppliste, og innlogging med Google eller GitHub.",
     "p.mush.h": "Soppklassifisering",
-    "p.mush.badge": "Spiselig",
-    "p.mush": "Last opp et bilde og få spiselig eller giftig, med sikkerhet, pluss en søkbar artsguide. Laget i et universitetsemne (INFO212).",
-    "p.witch": "Et eksperiment som lar deg spille The Witcher 3 som en Minecraft-figur, med bevegelse, inventar og bygging fra Minecraft inne i Witcher-verdenen. En vert skrevet i C++ snakker med en Minecraft-mod over nettverksprotokollen dens.",
+    "p.mush": "Bilde inn, spiselig eller giftig ut, med artsguide. Et prosjekt fra et universitetsemne.",
+    "p.witch": "Spill The Witcher 3 som en Minecraft-figur. En vert i C++ kobler de to spillene sammen.",
     "p.ml.h": "Visualisering av maskinlæring",
-    "p.ml": "En webapp som trener regresjons- og klassifiseringsmodeller på flere datasett og viser hvordan de treffer, på norsk og engelsk.",
+    "p.ml": "Trener regresjons- og klassifiseringsmodeller på ekte datasett og viser hvordan de treffer.",
     "p.live": "Nettside",
     "p.code": "Kode",
     "p.video": "Video",
-    "a.label": "Om meg",
-    "a.title": "Litt om meg",
-    "a.p1": "Jeg studerer informasjonsvitenskap ved Universitetet i Bergen. Jeg liker å ta et prosjekt hele veien: designe datamodellen, skrive backend og grensesnitt, og få det ut i drift for ekte brukere.",
-    "a.p2": "Ved siden av driver jeg <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, mitt eget enkeltpersonforetak, som tilbyr hjelp med teknologi.",
-    "s.lang": "Språk",
-    "s.back": "Backend",
-    "s.front": "Frontend",
-    "s.id": "Identitet",
-    "s.ops": "Drift",
+    "a.title": "Om meg",
+    "a.p1": "Jeg studerer informasjonsvitenskap ved Universitetet i Bergen og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, mitt eget lille firma for teknologihjelp.",
     "c.title": "Ta kontakt",
-    "c.p": "Jeg er åpen for utviklerstillinger og internship. Den enkleste måten å nå meg på står under.",
-    "f.made": "Laget av Henvag",
-    "f.note": "Ren HTML, CSS og litt JavaScript, på GitHub Pages."
+    "f.made": "Laget av Henvag"
   };
+
 
   var STORE_KEY = "henvag.lang";
   var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
@@ -178,13 +157,15 @@
     }
   }
 
-  // Projects carousel: scroll-snap does the swiping; buttons, dots and arrow keys move one card.
+  // Carousels: scroll-snap does the swiping; buttons, dots, thumbnails and arrow keys move one slide.
+  // Nothing moves on its own.
   document.querySelectorAll("[data-carousel]").forEach(function (root) {
     var track = root.querySelector(".carousel-track");
     var slides = Array.prototype.slice.call(track.children);
     var prev = root.querySelector("[data-prev]");
     var next = root.querySelector("[data-next]");
-    var dots = Array.prototype.slice.call(root.querySelectorAll(".carousel-dots button"));
+    var pickers = Array.prototype.slice.call(root.querySelectorAll(".carousel-dots button, .carousel-thumbs button"));
+    var thumbs = root.querySelector(".carousel-thumbs");
     var current = root.querySelector("[data-current]");
     var total = root.querySelector("[data-total]");
     if (total) total.textContent = String(slides.length);
@@ -192,7 +173,9 @@
     function step() {
       return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
     }
+    function atEnd() { return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; }
     function index() {
+      if (atEnd()) return slides.length - 1;
       return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / step())));
     }
     function goTo(i) {
@@ -201,20 +184,35 @@
     }
     function update() {
       var i = index();
-      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      if (atEnd) i = slides.length - 1;
       if (current) current.textContent = String(i + 1);
       if (prev) prev.disabled = track.scrollLeft <= 4;
-      if (next) next.disabled = atEnd;
-      dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === i)); });
+      if (next) next.disabled = atEnd();
+      pickers.forEach(function (d, k) { d.setAttribute("aria-current", String(k === i)); });
+      if (thumbs && pickers[i]) {
+        var t = pickers[i];
+        var left = t.offsetLeft - thumbs.offsetLeft;
+        if (left < thumbs.scrollLeft || left + t.offsetWidth > thumbs.scrollLeft + thumbs.clientWidth) {
+          thumbs.scrollTo({ left: left - 8 });
+        }
+      }
     }
 
-    if (prev) prev.addEventListener("click", function () { goTo(index() - 1); });
-    if (next) next.addEventListener("click", function () { goTo(index() + 1); });
-    dots.forEach(function (d, k) { d.addEventListener("click", function () { goTo(k); }); });
+    // Where each slide can actually be scrolled to; the last few share the end position.
+    function stops() {
+      var max = track.scrollWidth - track.clientWidth;
+      return slides.map(function (sl) { return Math.min(sl.offsetLeft - slides[0].offsetLeft, max); });
+    }
+    function move(dir) {
+      var at = track.scrollLeft, list = stops(), k;
+      if (dir > 0) { for (k = 0; k < list.length; k++) if (list[k] > at + 4) return track.scrollTo({ left: list[k] }); }
+      else { for (k = list.length - 1; k >= 0; k--) if (list[k] < at - 4) return track.scrollTo({ left: list[k] }); }
+    }
+    if (prev) prev.addEventListener("click", function () { move(-1); });
+    if (next) next.addEventListener("click", function () { move(1); });
+    pickers.forEach(function (d, k) { d.addEventListener("click", function () { goTo(k); }); });
     track.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight") { e.preventDefault(); goTo(index() + 1); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); goTo(index() - 1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); move(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
     });
     var ticking = false;
     track.addEventListener("scroll", function () {
