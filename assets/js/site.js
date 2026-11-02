@@ -59,6 +59,7 @@
     "p.title": "Mindre ting jeg har laget",
     "p.pulse": "En side for skrivehastighet med toppliste. Logg inn med Google eller GitHub for å ta vare på resultatene dine.",
     "p.mush.h": "Soppklassifisering",
+    "p.mush.badge": "Spiselig",
     "p.mush": "Last opp et bilde og få spiselig eller giftig, med sikkerhet, pluss en søkbar artsguide. Laget i et universitetsemne (INFO212).",
     "p.witch": "Et eksperiment som lar deg spille The Witcher 3 som en Minecraft-figur, med bevegelse, inventar og bygging fra Minecraft inne i Witcher-verdenen. En vert skrevet i C++ snakker med en Minecraft-mod over nettverksprotokollen dens.",
     "p.ml.h": "Visualisering av maskinlæring",
@@ -176,6 +177,54 @@
       });
     }
   }
+
+  // Projects carousel: scroll-snap does the swiping; buttons, dots and arrow keys move one card.
+  document.querySelectorAll("[data-carousel]").forEach(function (root) {
+    var track = root.querySelector(".carousel-track");
+    var slides = Array.prototype.slice.call(track.children);
+    var prev = root.querySelector("[data-prev]");
+    var next = root.querySelector("[data-next]");
+    var dots = Array.prototype.slice.call(root.querySelectorAll(".carousel-dots button"));
+    var current = root.querySelector("[data-current]");
+    var total = root.querySelector("[data-total]");
+    if (total) total.textContent = String(slides.length);
+
+    function step() {
+      return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+    }
+    function index() {
+      return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / step())));
+    }
+    function goTo(i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft });
+    }
+    function update() {
+      var i = index();
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (atEnd) i = slides.length - 1;
+      if (current) current.textContent = String(i + 1);
+      if (prev) prev.disabled = track.scrollLeft <= 4;
+      if (next) next.disabled = atEnd;
+      dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === i)); });
+    }
+
+    if (prev) prev.addEventListener("click", function () { goTo(index() - 1); });
+    if (next) next.addEventListener("click", function () { goTo(index() + 1); });
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { goTo(k); }); });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); goTo(index() + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); goTo(index() - 1); }
+    });
+    var ticking = false;
+    track.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () { update(); ticking = false; });
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
 
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
