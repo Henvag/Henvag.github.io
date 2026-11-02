@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="assets/img/henvagdev-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -52,13 +52,12 @@
     <!-- Intro -->
     <section class="intro wrap" id="top">
       <div class="intro-text">
-        <p class="kicker" data-i18n="intro.kicker">Hi, I'm</p>
-        <h1>Henrik Rolland Vågseth</h1>
-        <p class="lead" data-i18n="intro.lead">Developer and Information Science student at the University of Bergen. I build web applications end to end, from the database policy to the interface, and I am most at home with identity, multi-tenant data and the parts of a system that have to be right.</p>
-        <p data-i18n="intro.page">This page is mainly for showing what I am working on, and what I have done before :)</p>
+        <h1 data-i18n="intro.title">Hi, I'm Henrik</h1>
+        <p class="lead" data-i18n="intro.lead">Henrik Rolland Vågseth, developer in Bergen. I build web apps end to end, from the database to the interface.</p>
+        <p class="intro-page" data-i18n="intro.page">This page shows what I'm working on, and what I've made before :)</p>
         <div class="actions">
           <a class="btn btn-primary" href="#tenant-access" data-i18n="intro.cta">See Tenant Access</a>
-          <a class="btn" href="#projects" data-i18n="intro.cta2">All projects</a>
+          <a class="btn" href="#projects" data-i18n="intro.cta2">Other projects</a>
         </div>
       </div>
 
@@ -67,7 +66,7 @@
         <div class="music-player" id="music-player">
           <svg class="music-eq" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="12" width="6" height="20" rx="2"/><rect x="12" y="4" width="6" height="28" rx="2"/><rect x="22" y="16" width="6" height="16" rx="2"/><rect x="32" y="8" width="6" height="24" rx="2"/></svg>
           <button type="button" class="btn btn-spotify" id="music-load" data-i18n="music.load">Load the Spotify player</button>
-          <p class="music-note" data-i18n="music.note">Loads an embedded playlist from Spotify. Nothing loads until you press it.</p>
+          <p class="music-note" data-i18n="music.note">Nothing loads until you press it.</p>
         </div>
       </aside>
     </section>
@@ -75,213 +74,212 @@
     <!-- Case study -->
     <section class="case" id="tenant-access" aria-labelledby="case-title">
       <div class="wrap">
-        <p class="section-label" data-i18n="case.label">Featured case study</p>
-        <h2 id="case-title">Tenant Access</h2>
-        <p class="lead" data-i18n="case.lead">Single sign-on and access control for small companies that run their own tools, like Grafana, Outline and Gitea. People sign in with Google or Microsoft, admins decide who may open which app, and every sign-in and refusal is logged.</p>
-
-        <dl class="facts">
-          <div><dt data-i18n="case.role">Role</dt><dd data-i18n="case.role.v">Solo project, from schema to deploy</dd></div>
-          <div><dt data-i18n="case.stack">Stack</dt><dd>FastAPI, PostgreSQL, React, TypeScript, Docker</dd></div>
-          <div><dt data-i18n="case.hosting">Runs on</dt><dd>Render, Neon, Cloudflare</dd></div>
-        </dl>
+        <div class="case-head">
+          <div>
+            <h2 id="case-title">Tenant Access</h2>
+            <p class="lead" data-i18n="case.lead">Single sign-on for small companies that run their own tools, like Grafana and Outline. One login, and one place to see who has access.</p>
+          </div>
+          <ul class="facts">
+            <li data-i18n="case.f1">Solo project</li>
+            <li>FastAPI, PostgreSQL, React</li>
+            <li>Render, Neon, Cloudflare</li>
+          </ul>
+        </div>
 
         <div class="actions">
           <a class="btn btn-primary" href="https://tenantaccess.me" data-i18n="case.demo">Open the live demo</a>
           <a class="btn" href="https://github.com/Henvag/tenant-access-dashboard" data-i18n="case.source">Source on GitHub</a>
         </div>
-        <p class="note" data-i18n="case.demo.note">The demo needs no account. It signs you in as the owner of a sample company, read-only. The free hosting can take about 30 seconds to wake up.</p>
+        <p class="note" data-i18n="case.demo.note">No account needed. The demo is a read-only sample company, and the free server can take 30 seconds to wake up.</p>
 
-        <figure class="shot shot-hero">
-          <button type="button" class="zoom" data-full="assets/img/ta-overview.webp" aria-label="Enlarge screenshot">
-            <img src="assets/img/ta-overview.webp" width="1440" height="900" alt="Tenant Access overview for the sample company Nordlys Analytics: people, admins and members counts, the apps the user can open, and recent sign-ins." >
-          </button>
-        </figure>
-
-        <div class="cols">
-          <div>
-            <h3 data-i18n="case.problem.h">The problem</h3>
-            <p data-i18n="case.problem.p">A company of 5 to 50 people that hosts its own tools ends up with a separate login for each of them, and no single place to see who has access or to turn someone off. The big identity products solve this, but they are priced and built for much larger organisations.</p>
-          </div>
-          <div>
-            <h3 data-i18n="case.built.h">What I built</h3>
-            <ul class="ticks">
-              <li data-i18n="case.built.1">Sign-in with Google or Microsoft, mapped to a company by the verified email domain</li>
-              <li data-i18n="case.built.2">An OpenID Connect provider of its own, so apps like Grafana sign in through it (code flow with PKCE, RS256 tokens, JWKS)</li>
-              <li data-i18n="case.built.3">Per-app access rules, an audit log with CSV export, and signed webhooks</li>
-              <li data-i18n="case.built.4">Partner mode, so an outside IT firm can administer several client companies</li>
-              <li data-i18n="case.built.5">Billing with Stripe, English and Norwegian UI, and a public read-only demo</li>
+        <div class="carousel carousel-shots" data-carousel aria-roledescription="carousel" aria-label="Screenshots from the demo company">
+          <div class="carousel-viewport">
+            <ul class="carousel-track" tabindex="0">
+            <li class="slide">
+              <figure class="shot">
+                <button type="button" class="zoom" data-full="assets/img/ta-overview.webp" aria-label="Enlarge screenshot">
+                  <img src="assets/img/ta-overview.webp" width="1440" height="900" alt="Tenant Access overview for the sample company Nordlys Analytics: people counts, the apps the user can open, and recent sign-ins.">
+                </button>
+                <figcaption data-i18n="g.overview">Overview</figcaption>
+              </figure>
+            </li>
+            <li class="slide">
+              <figure class="shot">
+                <button type="button" class="zoom" data-full="assets/img/ta-people.webp" aria-label="Enlarge screenshot">
+                  <img src="assets/img/ta-people.webp" loading="lazy" width="1440" height="900" alt="People page: the company directory with roles and last sign-in.">
+                </button>
+                <figcaption data-i18n="g.people">People and roles</figcaption>
+              </figure>
+            </li>
+            <li class="slide">
+              <figure class="shot">
+                <button type="button" class="zoom" data-full="assets/img/ta-apps.webp" aria-label="Enlarge screenshot">
+                  <img src="assets/img/ta-apps.webp" loading="lazy" width="1440" height="900" alt="Apps page: registered OpenID Connect apps with their access policy.">
+                </button>
+                <figcaption data-i18n="g.apps">Apps and who may open them</figcaption>
+              </figure>
+            </li>
+            <li class="slide">
+              <figure class="shot">
+                <button type="button" class="zoom" data-full="assets/img/ta-audit.webp" aria-label="Enlarge screenshot">
+                  <img src="assets/img/ta-audit.webp" loading="lazy" width="1440" height="900" alt="Audit log: sign-ins, app sign-ins and refusals with reasons.">
+                </button>
+                <figcaption data-i18n="g.audit">Audit log with refusal reasons</figcaption>
+              </figure>
+            </li>
+            <li class="slide">
+              <figure class="shot">
+                <button type="button" class="zoom" data-full="assets/img/ta-organization.webp" aria-label="Enlarge screenshot">
+                  <img src="assets/img/ta-organization.webp" loading="lazy" width="1440" height="900" alt="Organization page: verified domains, the company-managed accounts setting and webhooks.">
+                </button>
+                <figcaption data-i18n="g.org">Domains and webhooks</figcaption>
+              </figure>
+            </li>
             </ul>
+            <button type="button" class="carousel-btn carousel-prev" data-prev aria-label="Previous screenshot">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" class="carousel-btn carousel-next" data-next aria-label="Next screenshot">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="carousel-thumbs" role="group" aria-label="Choose a screenshot">
+          <button type="button" aria-current="true" aria-label="Overview"><img src="assets/img/ta-overview.webp" loading="lazy" width="144" height="90" alt=""></button>
+          <button type="button" aria-label="People and roles"><img src="assets/img/ta-people.webp" loading="lazy" width="144" height="90" alt=""></button>
+          <button type="button" aria-label="Apps and who may open them"><img src="assets/img/ta-apps.webp" loading="lazy" width="144" height="90" alt=""></button>
+          <button type="button" aria-label="Audit log with refusal reasons"><img src="assets/img/ta-audit.webp" loading="lazy" width="144" height="90" alt=""></button>
+          <button type="button" aria-label="Domains and webhooks"><img src="assets/img/ta-organization.webp" loading="lazy" width="144" height="90" alt=""></button>
           </div>
         </div>
 
-        <h3 class="sub" data-i18n="case.decisions">Decisions worth talking about</h3>
-
-        <article class="decision decision-feature">
-          <div class="decision-text">
-            <p class="decision-n">01</p>
-            <h4 data-i18n="d1.h">Isolation the database enforces, not the code</h4>
-            <p data-i18n="d1.p1">The classic multi-tenant bug is one query that forgets <code>WHERE tenant_id = ?</code>. I put the rule in Postgres instead: every tenant table has row-level security, forced even for the table owner, and each request sets the tenant for its transaction. With no tenant set, reads come back empty and writes are refused.</p>
-            <p data-i18n="d1.p2">Then I found that production was quietly skipping it. Neon's default owner role has <code>BYPASSRLS</code>, so every policy was ignored. The tests had not caught it because they ran as a normal role. The fix was a restricted role for the app, a separate one for migrations, and a startup check that refuses to run if the app's role can bypass the policies.</p>
+        <div class="case-grid">
+          <div>
+            <h3 data-i18n="case.built.h">What it does</h3>
+            <ul class="ticks">
+              <li data-i18n="case.built.1">Sign-in with Google or Microsoft, matched to the company by verified email domain</li>
+              <li data-i18n="case.built.2">Its own OpenID Connect provider, so Grafana and Outline sign in through it</li>
+              <li data-i18n="case.built.3">Access rules per app, an audit log, CSV export and signed webhooks</li>
+              <li data-i18n="case.built.4">Partner mode for IT firms that look after several companies</li>
+            </ul>
           </div>
-          <figure class="decision-media">
+          <div>
+            <h3 data-i18n="case.learned.h">What I learned</h3>
+            <p class="statement" data-i18n="case.learned.p">Test with the same database role as production. A security guarantee that only holds in CI isn't one.</p>
+          </div>
+        </div>
+
+        <h3 class="sub" data-i18n="case.decisions">The hard parts</h3>
+
+        <article class="feature">
+          <div class="feature-text">
+            <h4 data-i18n="d1.h">Isolation in the database</h4>
+            <p data-i18n="d1.p">Every tenant table has forced row-level security, so a query that forgets its tenant filter gets nothing back. In production it was silently off, because Neon's owner role bypasses RLS. Now the app runs as a restricted role and refuses to start if it could bypass the policies.</p>
+            <pre class="code" aria-label="SQL policy"><code>ALTER TABLE users FORCE ROW LEVEL SECURITY;
+
+CREATE POLICY tenant_isolation ON users USING (
+  tenant_id = current_setting('app.tenant_id')::uuid
+);</code></pre>
+          </div>
+          <figure class="feature-media">
             <video class="rls-video" muted playsinline preload="metadata" poster="assets/img/rls-separation-poster.webp" aria-label="Animation: two hands pull one shared users table apart, and the rows land on Company A and Company B with row-level security between them.">
               <source src="assets/video/rls-separation.mp4" type="video/mp4">
             </video>
-            <figcaption>
-              <span data-i18n="d1.cap">The same idea as an animation on the Tenant Access landing page.</span>
-              <button type="button" class="link-btn replay" data-i18n="d1.replay">Play again</button>
-            </figcaption>
+            <button type="button" class="link-btn replay" data-i18n="d1.replay">Play again</button>
           </figure>
         </article>
 
-        <pre class="code" aria-label="SQL policy"><code><span class="c">-- Every tenant table, forced even for the owner</span>
-ALTER TABLE users ENABLE ROW LEVEL SECURITY;
-ALTER TABLE users FORCE ROW LEVEL SECURITY;
-
-CREATE POLICY users_tenant_isolation ON users
-  USING (tenant_id = NULLIF(current_setting('app.tenant_id', true), '')::uuid);</code></pre>
-
-        <div class="decision-grid">
-          <article class="decision">
-            <p class="decision-n">02</p>
-            <h4 data-i18n="d2.h">Closing the nOAuth takeover</h4>
-            <p data-i18n="d2.p">With Microsoft's multi-tenant sign-in, anyone can create a directory and give a user any email address. Trusting that address would let a stranger sign in as your colleague. Work-account emails only count when the token says the directory verified the domain, and an existing account is never linked to a new identity by email alone.</p>
+        <div class="points">
+          <article>
+            <h4 data-i18n="d2.h">Closing nOAuth</h4>
+            <p data-i18n="d2.p">A Microsoft work email only counts when its directory has verified the domain, and accounts are never linked by email alone.</p>
           </article>
-          <article class="decision">
-            <p class="decision-n">03</p>
-            <h4 data-i18n="d3.h">A public demo nobody can vandalise</h4>
-            <p data-i18n="d3.p">Anonymous visitors get an admin seat in a sample company, so the seat has to be harmless on the server, not just in the UI. One app-wide dependency refuses every write from a demo session, the demo apps' secrets were thrown away at seed time, and visitors' IP addresses are never stored.</p>
+          <article>
+            <h4 data-i18n="d3.h">A demo nobody can break</h4>
+            <p data-i18n="d3.p">One server-side rule refuses every write from a demo session. Its app secrets were thrown away, and visitor IPs are never stored.</p>
           </article>
-          <article class="decision">
-            <p class="decision-n">04</p>
-            <h4 data-i18n="d4.h">Webhooks that can't be aimed inward</h4>
-            <p data-i18n="d4.p">Audit events queue their deliveries in the same transaction as the event, and a background sender signs them with Standard Webhooks headers and retries for about seven hours. Private and loopback addresses are refused before every send and redirects are not followed, so a webhook can't be used to probe the server's own network.</p>
+          <article>
+            <h4 data-i18n="d4.h">Webhooks that stay outside</h4>
+            <p data-i18n="d4.p">Signed and retried, and refused for private or loopback addresses, so they can't probe the server's own network.</p>
           </article>
-        </div>
-
-        <h3 class="sub" data-i18n="case.gallery">From the demo company</h3>
-        <div class="gallery">
-          <figure class="shot">
-            <button type="button" class="zoom" data-full="assets/img/ta-people.webp" aria-label="Enlarge screenshot">
-              <img src="assets/img/ta-people.webp" loading="lazy" width="1440" height="900" alt="People page: the company directory with roles and last sign-in.">
-            </button>
-            <figcaption data-i18n="g.people">People and roles</figcaption>
-          </figure>
-          <figure class="shot">
-            <button type="button" class="zoom" data-full="assets/img/ta-apps.webp" aria-label="Enlarge screenshot">
-              <img src="assets/img/ta-apps.webp" loading="lazy" width="1440" height="900" alt="Apps page: registered OpenID Connect apps with their access policy.">
-            </button>
-            <figcaption data-i18n="g.apps">Apps and who may open them</figcaption>
-          </figure>
-          <figure class="shot">
-            <button type="button" class="zoom" data-full="assets/img/ta-audit.webp" aria-label="Enlarge screenshot">
-              <img src="assets/img/ta-audit.webp" loading="lazy" width="1440" height="900" alt="Audit log: sign-ins, app sign-ins and refusals with reasons.">
-            </button>
-            <figcaption data-i18n="g.audit">Audit log with refusal reasons</figcaption>
-          </figure>
-          <figure class="shot">
-            <button type="button" class="zoom" data-full="assets/img/ta-organization.webp" aria-label="Enlarge screenshot">
-              <img src="assets/img/ta-organization.webp" loading="lazy" width="1440" height="900" alt="Organization page: verified domains, company-managed accounts setting and webhooks.">
-            </button>
-            <figcaption data-i18n="g.org">Domains proved by DNS, and webhooks</figcaption>
-          </figure>
-        </div>
-
-        <div class="cols cols-tight">
-          <div>
-            <h3 data-i18n="case.learned.h">What I took from it</h3>
-            <p data-i18n="case.learned.p">Test against the same database role production uses. A security property that only holds in CI is not a property. I also learned to keep the scope small on purpose: two roles plus an owner, one container, one origin, one cookie.</p>
-          </div>
-          <div>
-            <h3 data-i18n="case.next.h">What I would do next</h3>
-            <p data-i18n="case.next.p">Automatic user provisioning (SCIM) from Google Workspace and Entra, a key rotation screen for the token signing keys, and paid hosting without the cold start once the first companies are using it.</p>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- Other projects -->
     <section class="wrap projects" id="projects" aria-labelledby="projects-title">
-      <div class="carousel" data-carousel>
+      <div class="carousel carousel-cards" data-carousel aria-roledescription="carousel" aria-labelledby="projects-title">
         <div class="carousel-head">
-          <div>
-            <p class="section-label" data-i18n="p.label">Other projects</p>
-            <h2 id="projects-title" data-i18n="p.title">Smaller things I have built</h2>
-          </div>
-          <div class="carousel-controls">
-            <span class="carousel-count" aria-live="polite"><span data-current>1</span> / <span data-total>4</span></span>
-            <button type="button" class="carousel-btn" data-prev aria-label="Previous project">
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
-            </button>
-            <button type="button" class="carousel-btn" data-next aria-label="Next project">
-              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-            </button>
-          </div>
+          <h2 id="projects-title" data-i18n="p.title">Other projects</h2>
+          <p class="carousel-count" aria-live="polite"><span data-current>1</span> / <span data-total>4</span></p>
         </div>
-
-        <ul class="carousel-track" tabindex="0" aria-label="Projects, scroll sideways for more">
-          <li class="slide">
-            <article class="card">
-              <div class="card-media cover-type" aria-hidden="true">
-                <p class="cover-type-text"><span class="typed">the quick brown fox jum</span><span class="caret"></span><span class="untyped">ps over the lazy dog</span></p>
-                <p class="cover-type-stats"><span><b>84</b> wpm</span><span><b>98%</b> acc</span></p>
-              </div>
-              <div class="card-body">
-                <h3>PulseType</h3>
-                <p data-i18n="p.pulse">A typing speed site with a leaderboard. Sign in with Google or GitHub to keep your scores.</p>
-                <p class="tags">Node.js, Express, PostgreSQL, Passport</p>
-                <p class="links"><a href="https://pulsetype.onrender.com" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/PulseType" data-i18n="p.code">Code</a></p>
-              </div>
-            </article>
-          </li>
-          <li class="slide">
-            <article class="card">
-              <div class="card-media">
-                <img src="assets/img/proj-mushroom.webp" width="900" height="560" loading="lazy" alt="Chanterelle mushrooms on a forest floor, one of the species in the app's guide.">
-                <span class="cover-badge" data-i18n="p.mush.badge">Edible</span>
-              </div>
-              <div class="card-body">
-                <h3 data-i18n="p.mush.h">Mushroom classifier</h3>
-                <p data-i18n="p.mush">Upload a photo and get edible or poisonous, with confidence, plus a searchable species guide. Built for a university course (INFO212).</p>
-                <p class="tags">React, Flask, Roboflow</p>
-                <p class="links"><a href="https://mushroomproject.app" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/MushroomProject" data-i18n="p.code">Code</a></p>
-              </div>
-            </article>
-          </li>
-          <li class="slide">
-            <article class="card">
-              <div class="card-media">
-                <img src="assets/img/proj-witchcraft.webp" width="900" height="560" loading="lazy" alt="WitchCraft main menu: a Minecraft character stands where Geralt usually does in The Witcher 3.">
-              </div>
-              <div class="card-body">
-                <h3>WitchCraft</h3>
-                <p data-i18n="p.witch">An experiment that lets you play The Witcher 3 as a Minecraft character, with Minecraft movement, inventory and block building inside the Witcher world. A C++ host talks to a Minecraft mod over its network protocol.</p>
-                <p class="tags">C++, Java, Python</p>
-                <p class="links"><a href="https://www.youtube.com/watch?v=9HFluJPhxtA" data-i18n="p.video">Video</a><a href="https://github.com/Henvag/WitchCraft" data-i18n="p.code">Code</a></p>
-              </div>
-            </article>
-          </li>
-          <li class="slide">
-            <article class="card">
-              <div class="card-media cover-plot" aria-hidden="true">
-                <svg viewBox="0 0 360 224" preserveAspectRatio="xMidYMid meet">
-                  <g class="plot-grid"><line x1="40" y1="190" x2="330" y2="190"/><line x1="40" y1="30" x2="40" y2="190"/><line x1="40" y1="110" x2="330" y2="110"/><line x1="185" y1="30" x2="185" y2="190"/></g>
-                  <line class="plot-fit" x1="48" y1="178" x2="322" y2="46"/>
-                  <g class="plot-dots">
-                    <circle cx="58" cy="168" r="4.5"/><circle cx="74" cy="176" r="4.5"/><circle cx="86" cy="150" r="4.5"/><circle cx="102" cy="160" r="4.5"/><circle cx="116" cy="138" r="4.5"/><circle cx="130" cy="150" r="4.5"/><circle cx="146" cy="124" r="4.5"/><circle cx="160" cy="132" r="4.5"/><circle cx="174" cy="112" r="4.5"/><circle cx="190" cy="118" r="4.5"/><circle cx="204" cy="96" r="4.5"/><circle cx="220" cy="104" r="4.5"/><circle cx="234" cy="84" r="4.5"/><circle cx="250" cy="90" r="4.5"/><circle cx="264" cy="70" r="4.5"/><circle cx="280" cy="78" r="4.5"/><circle cx="296" cy="58" r="4.5"/><circle cx="312" cy="64" r="4.5"/>
-                  </g>
-                </svg>
-              </div>
-              <div class="card-body">
-                <h3 data-i18n="p.ml.h">Machine learning visualiser</h3>
-                <p data-i18n="p.ml">A web app that trains regression and classification models on several datasets and plots how they fit, in English and Norwegian.</p>
-                <p class="tags">Python, Flask, scikit-learn, Babel</p>
-                <p class="links"><a href="https://github.com/Henvag/Machine_learning_WebApp" data-i18n="p.code">Code</a></p>
-              </div>
-            </article>
-          </li>
-        </ul>
-
+        <div class="carousel-viewport">
+          <ul class="carousel-track" tabindex="0">
+            <li class="slide">
+              <article class="card">
+                <div class="card-media cover-type" aria-hidden="true">
+                  <p class="cover-type-text"><span class="typed">the quick brown fox jum</span><span class="caret"></span><span class="untyped">ps over the lazy dog</span></p>
+                  <p class="cover-type-stats"><span><b>84</b> wpm</span><span><b>98%</b> acc</span></p>
+                </div>
+                <div class="card-body">
+                  <h3>PulseType</h3>
+                  <p data-i18n="p.pulse">Typing tests with a leaderboard, and sign-in with Google or GitHub.</p>
+                  <p class="tags">Node.js, Express, PostgreSQL</p>
+                  <p class="links"><a href="https://pulsetype.onrender.com" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/PulseType" data-i18n="p.code">Code</a></p>
+                </div>
+              </article>
+            </li>
+            <li class="slide">
+              <article class="card">
+                <div class="card-media">
+                  <img src="assets/img/proj-mushroom.webp" width="900" height="560" loading="lazy" alt="Chanterelle mushrooms on a forest floor, one of the species in the app's guide.">
+                </div>
+                <div class="card-body">
+                  <h3 data-i18n="p.mush.h">Mushroom classifier</h3>
+                  <p data-i18n="p.mush">Photo in, edible or poisonous out, with a species guide. A university course project.</p>
+                  <p class="tags">React, Flask, Roboflow</p>
+                  <p class="links"><a href="https://mushroomproject.app" data-i18n="p.live">Live site</a><a href="https://github.com/Henvag/MushroomProject" data-i18n="p.code">Code</a></p>
+                </div>
+              </article>
+            </li>
+            <li class="slide">
+              <article class="card">
+                <div class="card-media">
+                  <img src="assets/img/proj-witchcraft.webp" style="object-position: 78% center" width="900" height="560" loading="lazy" alt="WitchCraft main menu: a Minecraft character stands where Geralt usually does in The Witcher 3.">
+                </div>
+                <div class="card-body">
+                  <h3>WitchCraft</h3>
+                  <p data-i18n="p.witch">Play The Witcher 3 as a Minecraft character. A C++ host bridges the two games.</p>
+                  <p class="tags">C++, Java, Python</p>
+                  <p class="links"><a href="https://www.youtube.com/watch?v=9HFluJPhxtA" data-i18n="p.video">Video</a><a href="https://github.com/Henvag/WitchCraft" data-i18n="p.code">Code</a></p>
+                </div>
+              </article>
+            </li>
+            <li class="slide">
+              <article class="card">
+                <div class="card-media cover-plot" aria-hidden="true">
+                  <svg viewBox="0 0 360 224" preserveAspectRatio="xMidYMid meet">
+                    <line class="plot-fit" x1="48" y1="178" x2="322" y2="46"/>
+                    <g class="plot-dots">
+                      <circle cx="58" cy="168" r="5"/><circle cx="74" cy="176" r="5"/><circle cx="86" cy="150" r="5"/><circle cx="102" cy="160" r="5"/><circle cx="116" cy="138" r="5"/><circle cx="130" cy="150" r="5"/><circle cx="146" cy="124" r="5"/><circle cx="160" cy="132" r="5"/><circle cx="174" cy="112" r="5"/><circle cx="190" cy="118" r="5"/><circle cx="204" cy="96" r="5"/><circle cx="220" cy="104" r="5"/><circle cx="234" cy="84" r="5"/><circle cx="250" cy="90" r="5"/><circle cx="264" cy="70" r="5"/><circle cx="280" cy="78" r="5"/><circle cx="296" cy="58" r="5"/><circle cx="312" cy="64" r="5"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="card-body">
+                  <h3 data-i18n="p.ml.h">Machine learning visualiser</h3>
+                  <p data-i18n="p.ml">Trains regression and classification models on real datasets and plots how they fit.</p>
+                  <p class="tags">Python, Flask, scikit-learn</p>
+                  <p class="links"><a href="https://github.com/Henvag/Machine_learning_WebApp" data-i18n="p.code">Code</a></p>
+                </div>
+              </article>
+            </li>
+          </ul>
+            <button type="button" class="carousel-btn carousel-prev" data-prev aria-label="Previous project">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" class="carousel-btn carousel-next" data-next aria-label="Next project">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
         <div class="carousel-dots" role="group" aria-label="Choose a project">
           <button type="button" aria-label="PulseType" aria-current="true"></button>
           <button type="button" aria-label="Mushroom classifier"></button>
@@ -294,42 +292,31 @@ CREATE POLICY users_tenant_isolation ON users
     <!-- About -->
     <section class="wrap about" id="about" aria-labelledby="about-title">
       <figure class="portrait">
-        <img src="assets/img/henrik-560.webp" srcset="assets/img/henrik-280.webp 280w, assets/img/henrik-560.webp 560w" sizes="(max-width: 860px) 220px, 300px" width="560" height="560" loading="lazy" alt="Henrik Rolland Vågseth in a suit and tie, outdoors on a sunny day.">
+        <img src="assets/img/henrik-560.webp" srcset="assets/img/henrik-280.webp 280w, assets/img/henrik-560.webp 560w" sizes="(max-width: 860px) 224px, 288px" width="560" height="560" loading="lazy" alt="Henrik Rolland Vågseth in a suit and tie, outdoors on a sunny day.">
       </figure>
       <div class="about-body">
-      <div class="about-text">
-        <p class="section-label" data-i18n="a.label">About</p>
-        <h2 id="about-title" data-i18n="a.title">A bit about me</h2>
-        <p data-i18n="a.p1">I am a student of Information Science at the University of Bergen. I like taking a project all the way: designing the data model, writing the backend and the interface, and getting it deployed and running for real users.</p>
-        <p data-i18n="a.p2">On the side I run <a href="https://teknologihjelpen.no">Teknologihjelpen</a>, my own registered business (enkeltpersonforetak), which offers help with technology.</p>
-      </div>
-      <dl class="skills">
-        <div><dt data-i18n="s.lang">Languages</dt><dd>Python, TypeScript, JavaScript, SQL, C++, Java</dd></div>
-        <div><dt data-i18n="s.back">Backend</dt><dd>FastAPI, Flask, Express, SQLAlchemy, Alembic, PostgreSQL</dd></div>
-        <div><dt data-i18n="s.front">Frontend</dt><dd>React, Vite, HTML, CSS</dd></div>
-        <div><dt data-i18n="s.id">Identity</dt><dd>OAuth 2.0, OpenID Connect, PKCE, JWT</dd></div>
-        <div><dt data-i18n="s.ops">Shipping</dt><dd>Docker, GitHub Actions, Render, Neon, Cloudflare</dd></div>
-      </dl>
+        <h2 id="about-title" data-i18n="a.title">About me</h2>
+        <p data-i18n="a.p1">I study Information Science at the University of Bergen and like taking a project all the way, from the data model to the deploy. I also run <a href="https://teknologihjelpen.no">Teknologihjelpen</a>, my own small tech-help business.</p>
+        <ul class="chips" aria-label="Tools I use">
+          <li>Python</li><li>TypeScript</li><li>SQL</li><li>FastAPI</li><li>PostgreSQL</li><li>React</li><li>OpenID Connect</li><li>Docker</li><li>GitHub Actions</li><li>C++</li>
+        </ul>
       </div>
     </section>
 
     <!-- Contact -->
     <section class="wrap contact" id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title" data-i18n="c.title">Get in touch</h2>
-      <p data-i18n="c.p">I am open to developer roles and internships. The easiest way to reach me is below.</p>
       <ul class="contact-links">
         <li><a class="contact-primary" href="mailto:henvagrolland@gmail.com">henvagrolland@gmail.com</a></li>
         <li><a href="https://www.linkedin.com/in/henvagdev/" rel="me">LinkedIn</a></li>
         <li><a href="https://github.com/Henvag" rel="me">GitHub</a></li>
-        <!-- TODO(Henrik): add a CV when you have one: <li><a href="assets/cv.pdf">CV (PDF)</a></li> -->
       </ul>
     </section>
   </main>
 
   <footer class="foot">
     <div class="wrap foot-inner">
-    <p><span data-i18n="f.made">Made by Henvag</span> <span id="year">2026</span></p>
-    <p class="foot-note" data-i18n="f.note">Plain HTML, CSS and a little JavaScript, hosted on GitHub Pages.</p>
+      <p><span data-i18n="f.made">Made by Henvag</span> <span id="year">2026</span></p>
     </div>
   </footer>
 
