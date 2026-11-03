@@ -57,7 +57,8 @@
     "a.title": "Om meg",
     "a.p1": "Jeg studerer informasjonsvitenskap ved Universitetet i Bergen og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, mitt eget lille firma for teknologihjelp.",
     "c.title": "Ta kontakt",
-    "f.made": "Laget av Henvag"
+    "f.made": "Laget av Henvag",
+    "f.privacy": "Ingen informasjonskapsler. Besøk telles med Cloudflare Web Analytics, som ikke lagrer noe på enheten din og ikke identifiserer deg."
   };
 
 
