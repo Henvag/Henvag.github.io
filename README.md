@@ -8,6 +8,7 @@ Plain HTML, CSS and a little JavaScript, served by GitHub Pages straight from `m
 - `assets/js/site.js` holds the Norwegian copy (the `NO` table), the language toggle, the Spotify player, the two carousels, the screenshot lightbox and the animation trigger.
 - `assets/css/site.css` holds the look: the navy and violet from the H DEV logo, Anton for headings, IBM Plex Sans for text.
 - `assets/img` and `assets/video` hold the Tenant Access screenshots and the row-level security clip, taken from the read-only demo company.
+- `cv/` holds the public CV in English and Norwegian. The About and Contact links follow the language toggle (`data-href-no`). These copies leave out phone numbers, street address and birth date on purpose.
 
 To preview locally, run `python3 -m http.server` in this folder and open http://localhost:8000.
 
