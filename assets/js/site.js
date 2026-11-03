@@ -55,7 +55,7 @@
     "p.code": "Kode",
     "p.video": "Video",
     "a.title": "Om meg",
-    "a.p1": "Jeg studerer informasjonsvitenskap ved Universitetet i Bergen og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, mitt eget lille firma for teknologihjelp.",
+    "a.p1": "Jeg har en bachelor i informasjonsvitenskap fra Universitetet i Bergen og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, mitt eget lille firma for teknologihjelp.",
     "a.cv": "Min CV (PDF)",
     "c.title": "Ta kontakt",
     "f.made": "Laget av Henvag"
