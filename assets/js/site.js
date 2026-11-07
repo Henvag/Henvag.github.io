@@ -55,7 +55,8 @@
     "p.code": "Kode",
     "p.video": "Video",
     "a.title": "Om meg",
-    "a.p1": "Jeg studerer informasjonsvitenskap ved Universitetet i Bergen og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, mitt eget lille firma for teknologihjelp.",
+    "a.p1": "Jeg fullfører bachelorgraden i informasjonsvitenskap ved Universitetet i Bergen denne høsten og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, mitt eget lille firma for teknologihjelp.",
+    "a.cv": "Min CV (PDF)",
     "c.title": "Ta kontakt",
     "f.made": "Laget av Henvag",
     "f.privacy": "Ingen informasjonskapsler. Besøk telles med Cloudflare Web Analytics, som ikke lagrer noe på enheten din og ikke identifiserer deg."
@@ -65,6 +66,9 @@
   var STORE_KEY = "henvag.lang";
   var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
   var english = nodes.map(function (el) { return el.innerHTML; });
+  // Links with a Norwegian target, like the CV, swap their href with the language.
+  var hrefNodes = Array.prototype.slice.call(document.querySelectorAll("[data-href-no]"));
+  var hrefEnglish = hrefNodes.map(function (el) { return el.getAttribute("href"); });
 
   function storedLang() {
     try { return localStorage.getItem(STORE_KEY); } catch (e) { return null; }
@@ -74,6 +78,9 @@
     nodes.forEach(function (el, i) {
       var key = el.getAttribute("data-i18n");
       el.innerHTML = lang === "no" && NO[key] ? NO[key] : english[i];
+    });
+    hrefNodes.forEach(function (el, i) {
+      el.setAttribute("href", lang === "no" ? el.getAttribute("data-href-no") : hrefEnglish[i]);
     });
     document.documentElement.lang = lang === "no" ? "nb" : "en";
     document.querySelectorAll(".lang button").forEach(function (b) {
