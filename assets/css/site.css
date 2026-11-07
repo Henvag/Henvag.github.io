@@ -326,6 +326,7 @@ h4 { color: var(--ink); font-size: 18px; line-height: 28px; font-weight: 600; ma
 .foot { background: #000; }
 .foot-inner { padding-top: 24px; padding-bottom: 24px; }
 .foot p { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-2); font-weight: 600; }
+.foot p.foot-privacy { margin-top: 8px; font-weight: 400; max-width: 60ch; }
 
 /* Lightbox (the old site's click-to-enlarge) */
 .lightbox { border: 0; padding: 0; background: transparent; max-width: min(1440px, 94vw); max-height: 92vh; overflow: visible; }
