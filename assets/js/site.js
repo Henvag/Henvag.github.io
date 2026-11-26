@@ -55,7 +55,7 @@
     "p.code": "Kode",
     "p.video": "Video",
     "a.title": "Om meg",
-    "a.p1": "Jeg fullfører bachelorgraden i informasjonsvitenskap ved Universitetet i Bergen denne høsten og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, enkeltpersonforetaket mitt, som selger Tenant Access og fortsatt tar noen IT-oppdrag.",
+    "a.p1": "Jeg ble ferdig med bachelorgraden i informasjonsvitenskap ved Universitetet i Bergen i juni 2026 og liker å ta et prosjekt hele veien, fra datamodellen til driften. Jeg driver også <a href=\"https://teknologihjelpen.no\">Teknologihjelpen</a>, enkeltpersonforetaket mitt, som selger Tenant Access og fortsatt tar noen IT-oppdrag.",
     "a.cv": "Min CV (PDF)",
     "c.title": "Ta kontakt",
     "f.made": "Laget av Henvag",
